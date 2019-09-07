@@ -39,9 +39,9 @@ class MusiqueController extends AbstractController
         if(!$musique)
             $musique = new Musique();
 
-        //Creation d'un formulaire
+        //Création d'un formulaire
         $form = $this->createFormBuilder($musique)
-            ->add('title')
+            ->add('title', TextType::class, ['label' => 'Titre'])
             ->add('description')
             ->add('code')
             ->getForm();
@@ -49,16 +49,16 @@ class MusiqueController extends AbstractController
         //Traitement du formulaire
         $form->handleRequest($request);
 
-        //Si le form a des information
+        //Si le form a des informations
         if($form->isSubmitted() && $form->isValid()){
 
             if(!$musique->getId())
                 $musique->setCreated(new \DateTime());
 
-            $manager->persist($musique);     // Persister les donnés
-            $manager->flush();              //Envoie des donnée
+            $manager->persist($musique);     // Persister les données
+            $manager->flush();              //Envoie des données
 
-            //Redirection vaire la musique Ajouter
+            //Redirection vers la musique Ajouter
             return $this->redirectToRoute('musique_detail', ['id' => $musique->getId()]);
         }
 
