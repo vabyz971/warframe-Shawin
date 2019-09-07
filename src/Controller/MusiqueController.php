@@ -10,24 +10,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MusiqueController extends AbstractController
 {
-    /**
-     * @var MusiqueRepository
-     */
-    private $repository;
-
-    public function __construct(MusiqueRepository $repository){
-
-        $this->repository = $repository;
-    }
-
 
     /**
      * @Route("/musique", name="musique")
      */
-    public function index()
+    public function index(MusiqueRepository $repo)
     {
-        $repo = $this->getDoctrine()->getRepository(Musique::class);
-
         $musiques = $repo->findAll();
 
         return $this->render('musique/index.html.twig',[
@@ -40,10 +28,8 @@ class MusiqueController extends AbstractController
     /**
      * @Route("/musique/{id}", name="musique_detail")
      */
-    public function details($id){
-
-        $repo = $this->getDoctrine()->getRepository(Musique::class);
-
+    public function details(MusiqueRepository $repo,$id)
+    {
         $musiques = $repo->find($id);
 
         return $this->render("musique/detail.html.twig",[
