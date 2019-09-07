@@ -11,7 +11,14 @@
     {{ form_row(formMusique.description)}}
     {{ form_row(formMusique.code) }}
 
-    <button type="submit" class="btn btn-primary">Ajouter la musique</button>
+    <button type="submit" class="btn btn-primary">
+        {% if editMode %}
+            Enregister les modifications
+        {% else %}
+            Ajouter la musique
+        {% endif %}
+
+    </button>
 
     {{ form_end(formMusique) }}
 

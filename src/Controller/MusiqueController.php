@@ -32,10 +32,12 @@ class MusiqueController extends AbstractController
 
      /**
      * @Route("/musique/new", name="musique_created")
+     * @Route("/musique/{id}/edit", name="musique_edit")
      */
-    public function create(Request $request, ObjectManager $manager){
+    public function create(Musique $musique = null ,Request $request, ObjectManager $manager){
 
-        $musique = new Musique();
+        if(!$musique)
+            $musique = new Musique();
 
         //Creation d'un formulaire
         $form = $this->createFormBuilder($musique)
@@ -49,7 +51,9 @@ class MusiqueController extends AbstractController
 
         //Si le form a des information
         if($form->isSubmitted() && $form->isValid()){
-            $musique->setCreated(new \DateTime());
+
+            if(!$musique->getId())
+                $musique->setCreated(new \DateTime());
 
             $manager->persist($musique);     // Persister les donnés
             $manager->flush();              //Envoie des donnée
@@ -60,7 +64,8 @@ class MusiqueController extends AbstractController
 
         return $this->render("musique/create.html.twig",[
             'current_menu' => 'musique_new',
-            'formMusique' => $form->createView()
+            'formMusique' => $form->createView(),
+            'editMode' => $musique->getId() !== null
         ]);
     }
 
