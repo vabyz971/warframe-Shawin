@@ -35,4 +35,19 @@ class MusiqueController extends AbstractController
             'musiques' => $musiques
         ]);
     }
+
+
+    /**
+     * @Route("/musique/{id}", name="musique_detail")
+     */
+    public function details($id){
+
+        $repo = $this->getDoctrine()->getRepository(Musique::class);
+
+        $musiques = $repo->find($id);
+
+        return $this->render("musique/detail.html.twig",[
+            "musique" => $musiques
+        ]);
+    }
 }

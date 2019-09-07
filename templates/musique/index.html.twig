@@ -2,19 +2,28 @@
 
 {% block body %}
 
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Composition</h1>
+        <p class="lead text-mutes">
+            ici vous retrouvers toute les compositions crée par les tennos 
+        </p>
+    </div>
+</section>
+
 <div class="container">
-    <h1>Voir tout les musiques</h1>
     <div class="row">
 
         {% for musique in musiques %}
 
-        <div class="col-sm">
-            <div class="card" style="width: 18rem;">
+        <div class="col-md-4">
+            <div class="card md-4 shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title"> {{ musique.title }} </h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ musique.description }}</h6>
                     <p class="card-text">{{ musique.code }}</p>
                     <a class="card-link">{{ musique.created | date('d/m/Y') }}</a>
+                    <a href="{{ path ('musique_detail', {id:musique.id}) }} " class="card-link">Plus de détail</a>
                     <a href="#" class="card-link">#Users</a>
                 </div>
             </div>
