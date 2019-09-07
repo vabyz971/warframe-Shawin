@@ -2,8 +2,27 @@
 
 {% block body %}
 
-<div class="container mt-4">
+<div class="container">
     <h1>Voir tout les musiques</h1>
+    <div class="row">
+
+        {% for musique in musiques %}
+
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ musique.title }} </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ musique.description }}</h6>
+                    <p class="card-text">{{ musique.code }}</p>
+                    <a class="card-link">{{ musique.created | date('d/m/Y') }}</a>
+                    <a href="#" class="card-link">#Users</a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
 
 </div>
 
