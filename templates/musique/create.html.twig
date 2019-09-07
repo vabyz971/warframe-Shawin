@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formMusique 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <h2>Ajoue d'une musique</h2>
+    {{ form_start(formMusique) }}
+
+    {{ form_row(formMusique.title, {'attr': {'placeholder': "Titre de la musique"}} )}}
+    {{ form_row(formMusique.description)}}
+    {{ form_row(formMusique.code) }}
+
+    <button type="submit" class="btn btn-primary">Ajouter la musique</button>
+
+    {{ form_end(formMusique) }}
+
+{% endblock %}
