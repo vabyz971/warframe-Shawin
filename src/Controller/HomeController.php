@@ -15,8 +15,13 @@ class HomeController extends AbstractController
      * @Route("/", name="home")
      * @param MusiqueRepository $repository
      */
-    public function index()
+    public function index(MusiqueRepository $repo)
     {
-        return $this->render('home/index.html.twig');
+        //Affiche les musique les plus récents
+        $musiques = $repo->findBy([],['created' => 'DESC']);
+
+        return $this->render('home/index.html.twig',[
+            'musiques' => $musiques
+        ]);
     }
 }

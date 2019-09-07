@@ -3,6 +3,30 @@
 
 {% block body %}
 
+    <dir class="row">
+
+        {% for musique in musiques %}
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/1024x420" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="{{ path ('musique_detail', {id:musique.id}) }}">{{ musique.title }}</a>
+                </h4>
+                <h5>Auteur</h5>
+                <p class="card-text">{{ musique.description }}</p>
+                <p class="card-text">{{ musique.code }}</p>
+              </div>
+              <div class="card-footer">
+                <a href="{{ path ('musique_detail', {id:musique.id}) }} " class="card-link">Plus de détail</a>
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+
+    </dir>
 
 
 {% endblock %}
