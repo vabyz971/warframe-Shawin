@@ -37,6 +37,11 @@ class Musique
      */
     private $created;
 
+    /**
+     * @ORM\Column(type="string", length=12)
+     */
+    private $difficulty;
+
     public function __construct(){
         $this->created = new \DateTime();
     }
@@ -57,6 +62,18 @@ class Musique
 
         return $this;
     }
+
+        public function getDifficulty(): ?string
+        {
+            return $this->difficulty;
+        }
+
+        public function setDifficulty(string $difficulty): self
+        {
+            $this->difficulty = $difficulty;
+
+            return $this;
+        }
 
     public function getDescription(): ?string
     {

@@ -6,6 +6,7 @@ use App\Entity\Musique;
 use App\Repository\MusiqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -41,6 +42,14 @@ class MusiqueController extends AbstractController
         $form = $this->createFormBuilder($musique)
             ->add('title', TextType::class, ['label' => 'Titre'])
             ->add('description')
+            ->add('difficulty',ChoiceType::class, [
+              'choices' => [
+                'Extrême' => 'Extreme',
+                'Dur' => 'Hard',
+                'Intermédiaire' => 'Intermediate',
+                'Facile' => 'Easy',
+                'Très Facile' => 'Very Easy',
+              ],])
             ->add('code')
             ->getForm();
 

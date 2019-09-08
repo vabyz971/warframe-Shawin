@@ -4,10 +4,11 @@
 
 {% block body %}
 
-    <h2>Ajout d'une musique</h2>
+    <h2>{%trans%}Ajout d'une musique{%endtrans%}</h2>
     {{ form_start(formMusique) }}
 
     {{ form_row(formMusique.title, {'attr': {'placeholder': "Titre de la musique"}} )}}
+    {{ form_row(formMusique.difficulty)}}
     {{ form_row(formMusique.description)}}
     {{ form_row(formMusique.code) }}
 
@@ -15,7 +16,7 @@
         {% if editMode %}
             Enregister les modifications
         {% else %}
-            Ajouter la musique
+            {%trans%} Ajouter la musique {%endtrans%}
         {% endif %}
 
     </button>

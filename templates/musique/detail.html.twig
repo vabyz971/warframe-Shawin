@@ -5,17 +5,19 @@
 <table class="table-responsive-xl table-dark">
   <thead>
     <tr>
-      <th scope="col">Titre</th>
-      <th scope="col">Auteur</th>
-      <th scope="col">Difficulter</th>
-      <th scope="col">Date</th>
-      <th scope="col">Code</th>
+      <th scope="col">{% trans %}Titre {% endtrans %}</th>
+      <th scope="col">{% trans %}Auteur{% endtrans %}</th>
+      <th scope="col">{% trans %}Difficulté{% endtrans %}</th>
+      <th scope="col">{% trans %}Description{% endtrans %}</th>
+      <th scope="col">{% trans %}Date{% endtrans %}</th>
+      <th scope="col">{% trans %}Code{% endtrans %}</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">{{ musique.title }}</th>
       <td><a href="#" class="card-link">#Users</a></td>
+      <td>{{ musique.difficulty }}</td>
       <td>{{ musique.description }}</td>
       <td>{{ musique.created | date('d/m/Y') }}</td>
       <td>{{ musique.code }}</td>

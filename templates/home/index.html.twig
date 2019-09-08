@@ -14,12 +14,13 @@
                 <h4 class="card-title">
                   <a href="{{ path ('musique_detail', {id:musique.id}) }}">{{ musique.title }}</a>
                 </h4>
-                <h5>Auteur</h5>
+                <p class="card-text">{{ musique.difficulty }}</p>
+                <h5>{%trans%}Auteur{%endtrans%}</h5>
                 <p class="card-text">{{ musique.description }}</p>
                 <p class="card-text">{{ musique.code }}</p>
               </div>
               <div class="card-footer">
-                <a href="{{ path ('musique_detail', {id:musique.id}) }} " class="card-link">Plus de détail</a>
+                <a href="{{ path ('musique_detail', {id:musique.id}) }} " class="card-link">{%trans%}Plus de détails{%endtrans%}</a>
               </div>
             </div>
           </div>

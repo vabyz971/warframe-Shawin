@@ -6,7 +6,7 @@
     <div class="container">
         <h1 class="jumbotron-heading">Compositions</h1>
         <p class="lead text-mutes">
-            ici vous retrouverez toutes les compositions crées par les tennos de tout l'univers.
+            {%trans%}Ici vous retrouverez toutes les compositions crées par les tennos de tout l'univers.{%endtrans%}
         </p>
     </div>
 </section>
@@ -20,10 +20,11 @@
             <div class="card md-4 shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title"> {{ musique.title }} </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ musique.description }}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ musique.difficulty }}</h6>
+                    <p>{{ musique.description }}</p>
                     <p class="card-text">{{ musique.code }}</p>
                     <a class="card-link">{{ musique.created | date('d/m/Y') }}</a>
-                    <a href="{{ path ('musique_detail', {id:musique.id}) }} " class="card-link">Plus de détail</a>
+                    <a href="{{ path ('musique_detail', {id:musique.id}) }} " class="card-link"> {%trans%} Plus de détails {%endtrans%}</a>
                     <a href="#" class="card-link">#Users</a>
                 </div>
             </div>
