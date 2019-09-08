@@ -4,7 +4,7 @@ body{
 
 
 .jumbotron  {
-    background-image: url(../img/background/Warframe0001.jpg);
+    /*background-image: url(../img/background/Warframe0001.jpg);*/
     background-position: -50px -190px;
     background-repeat: no-repeat;
 
