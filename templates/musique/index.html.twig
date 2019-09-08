@@ -2,38 +2,49 @@
 
 {% block body %}
 
-<section class="jumbotron text-center">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Compositions</h1>
+            <p class="lead text-mutes">
+                {%trans%}Ici vous retrouverez toutes les compositions crées par les tennos de tout l'univers.{%endtrans%}
+            </p>
+        </div>
+    </section>
+
     <div class="container">
-        <h1 class="jumbotron-heading">Compositions</h1>
-        <p class="lead text-mutes">
-            {%trans%}Ici vous retrouverez toutes les compositions crées par les tennos de tout l'univers.{%endtrans%}
-        </p>
-    </div>
-</section>
+        <div class="row">
 
-<div class="container">
-    <div class="row">
+            {% for musique in musiques %}
 
-        {% for musique in musiques %}
-
-        <div class="col-md-4">
-            <div class="card md-4 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title"> {{ musique.title }} </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ musique.difficulty }}</h6>
-                    <p>{{ musique.description }}</p>
-                    <p class="card-text">{{ musique.code }}</p>
-                    <a class="card-link">{{ musique.created | date('d/m/Y') }}</a>
-                    <a href="{{ path ('musique_detail', {id:musique.id}) }} " class="card-link"> {%trans%} Plus de détails {%endtrans%}</a>
-                    <a href="#" class="card-link">#Users</a>
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="http://placehold.it/420x640" class="card-img">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ musique.title }}</h5>
+                                <p class="card-text">{{ musique.description }}</p>
+                                <p class="card-text">{{ musique.code }}</p>
+                                <a href="{{ path ('musique_detail', {id:musique.id}) }} " class="card-link">
+                                    {%trans%}
+                                    Plus de détails
+                                    {%endtrans%}</a>
+                                <p class="card-text">
+                                    <small class="text-muted">{{ musique.difficulty }}</small>
+                                </p>
+                                <p class="card-text">
+                                    <small class="text-muted">{{ musique.created | date('d/m/Y') }}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+            {% endfor %}
+
         </div>
 
-        {% endfor %}
-
     </div>
-
-</div>
 
 {% endblock %}

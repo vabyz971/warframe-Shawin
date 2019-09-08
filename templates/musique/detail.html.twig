@@ -2,28 +2,35 @@
 
 {% block body %}
 
-<table class="table-responsive-xl table-dark">
-  <thead>
-    <tr>
-      <th scope="col">{% trans %}Titre {% endtrans %}</th>
-      <th scope="col">{% trans %}Auteur{% endtrans %}</th>
-      <th scope="col">{% trans %}Difficulté{% endtrans %}</th>
-      <th scope="col">{% trans %}Description{% endtrans %}</th>
-      <th scope="col">{% trans %}Date{% endtrans %}</th>
-      <th scope="col">{% trans %}Code{% endtrans %}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">{{ musique.title }}</th>
-      <td><a href="#" class="card-link">#Users</a></td>
-      <td>{{ musique.difficulty }}</td>
-      <td>{{ musique.description }}</td>
-      <td>{{ musique.created | date('d/m/Y') }}</td>
-      <td>{{ musique.code }}</td>
-    </tr>
-  </tbody>
-</table>
 
+<dir class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card text-center">
+        <div class="card-header">
+          {% trans %}Auteur{% endtrans %} : #Users
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{% trans %}Titre {% endtrans %} : {{ musique.title }}</h5>
+          <p class="card-text">{% trans %}Code{% endtrans %}</p>
+          <p id="codeCp" class="card-text"> {{ musique.code }}</p>
+          <button type="button" onclick="copyToClipboard('#codeCp')" class="btn btn-outline-dark">Copy</button>
+        </div>
+        <div class="card-footer text-muted">
+          {{ musique.created | date('d/m/Y') }}
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{% trans %}Description{% endtrans %} : </li>
+          <li class="list-group-item">{{ musique.description }}</li>
+          <li class="list-group-item">{% trans %}Difficulté{% endtrans %} : {{ musique.difficulty }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</dir>
 
 {% endblock %}

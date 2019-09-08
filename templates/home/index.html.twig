@@ -3,31 +3,36 @@
 
 {% block body %}
 
-    <dir class="row">
+    <div class="container">
+        <dir class="row">
 
-        {% for musique in musiques %}
+            {% for musique in musiques %}
 
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/1024x420" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="{{ path ('musique_detail', {id:musique.id}) }}">{{ musique.title }}</a>
-                </h4>
-                <p class="card-text">{{ musique.difficulty }}</p>
-                <h5>{%trans%}Auteur{%endtrans%}</h5>
-                <p class="card-text">{{ musique.description }}</p>
-                <p class="card-text">{{ musique.code }}</p>
-              </div>
-              <div class="card-footer">
-                <a href="{{ path ('musique_detail', {id:musique.id}) }} " class="card-link">{%trans%}Plus de détails{%endtrans%}</a>
-              </div>
-            </div>
-          </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <a href="{{ path ('musique_detail', {id:musique.id}) }}"><img class="card-img-top" src="img/background/Warframe0001.jpg" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ path ('musique_detail', {id:musique.id}) }}">{{ musique.title }}</a>
+                            </h4>
+                            <h5>{%trans%}Auteur{%endtrans%}</h5>
+                            <p class="card-text">{{ musique.difficulty }}</p>
+                            <p class="card-text">{{ musique.description }}</p>
+                            <p class="card-text">{{ musique.code }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <a href="{{ path ('musique_detail', {id:musique.id}) }} " class="card-link">{%trans%}Plus de détails{%endtrans%}</a>
+                                <small class="text-muted">crée le
+                                    {{ musique.created | date('d/m/Y') }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-          {% endfor %}
+            {% endfor %}
 
-    </dir>
-
+        </dir>
+    </div>
 
 {% endblock %}
