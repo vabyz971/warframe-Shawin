@@ -26,10 +26,6 @@
                                 <h5 class="card-title">{{ musique.title }}</h5>
                                 <p class="card-text">{{ musique.description }}</p>
                                 <p class="card-text">{{ musique.code }}</p>
-                                <a href="{{ path ('musique_detail', {id:musique.id}) }} " class="card-link">
-                                    {%trans%}
-                                    Plus de détails
-                                    {%endtrans%}</a>
                                 <p class="card-text">
                                     <small class="text-muted">{{ musique.difficulty }}</small>
                                 </p>
