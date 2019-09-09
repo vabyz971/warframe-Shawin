@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <h1>Inscription !</h1>
+
+
+    {{ form_start(form) }}
+
+    {{form_row(form.username, { 'label' : 'Pseudo','attr': {'placeholder': "Votre speudo (in-game) de préférence merci"}})}}
+    {{form_row(form.email, {'label' : 'Émail','attr': {'placeholder': "le vrai pas un faut"}})}}
+
+    {{form_row(form.password, {'label' : 'Mot de passe','attr': {'placeholder': "un qui soit bien complex"}})}}
+
+    {{form_row(form.confirm_password, {'label' : 'Comfirmer votre mot de passe','attr': {'placeholder': "Comfirmation du mot de passe"}})}}
+
+
+    <button type="submit" class="btn btn-success">Inscription</button>
+    {{ form_end(form) }}
+
+
+{% endblock %}

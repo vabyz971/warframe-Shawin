@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <form class="form-signin" action=" {{ path('security_login') }} " method="POST">
+        <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" class="form-control" placeholder="Addresse mail" required name="_username" autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" class="form-control" placeholder="mot de passe" required name="_password">
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me">
+                Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+    </form>
+
+{% endblock %}
