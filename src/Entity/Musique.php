@@ -47,7 +47,7 @@ class Musique
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="musiques")
      */
-    private $idMusique;
+    private $idUser;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="musique", orphanRemoval=true)
@@ -58,6 +58,11 @@ class Musique
      * @ORM\OneToMany(targetEntity="App\Entity\Link", mappedBy="musiqueLink")
      */
     private $links;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $visual;
 
     public function __construct(){
         $this->created = new \DateTime();
@@ -130,14 +135,14 @@ class Musique
         return $this;
     }
 
-    public function getIdMusique(): ?user
+    public function getIdUser(): ?user
     {
-        return $this->idMusique;
+        return $this->idUser;
     }
 
-    public function setIdMusique(?user $idMusique): self
+    public function setIdUser(?user $idUser): self
     {
-        $this->idMusique = $idMusique;
+        $this->idUser = $idUser;
 
         return $this;
     }
@@ -200,6 +205,18 @@ class Musique
                 $link->setMusiqueLink(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVisual(): ?string
+    {
+        return $this->visual;
+    }
+
+    public function setVisual(?string $visual): self
+    {
+        $this->visual = $visual;
 
         return $this;
     }

@@ -59,7 +59,7 @@ class User implements UserInterface
     private $createdAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Musique", mappedBy="idMusique")
+     * @ORM\OneToMany(targetEntity="App\Entity\Musique", mappedBy="idUser")
      */
     private $musiques;
 
