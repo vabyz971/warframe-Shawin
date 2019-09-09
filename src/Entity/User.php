@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -55,6 +57,22 @@ class User implements UserInterface
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Musique", mappedBy="idMusique")
+     */
+    private $musiques;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="Users", orphanRemoval=true)
+     */
+    private $comments;
+
+    public function __construct()
+    {
+        $this->musiques = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -149,6 +167,68 @@ class User implements UserInterface
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Musique[]
+     */
+    public function getMusiques(): Collection
+    {
+        return $this->musiques;
+    }
+
+    public function addMusique(Musique $musique): self
+    {
+        if (!$this->musiques->contains($musique)) {
+            $this->musiques[] = $musique;
+            $musique->setIdMusique($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMusique(Musique $musique): self
+    {
+        if ($this->musiques->contains($musique)) {
+            $this->musiques->removeElement($musique);
+            // set the owning side to null (unless already changed)
+            if ($musique->getIdMusique() === $this) {
+                $musique->setIdMusique(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getUsers() === $this) {
+                $comment->setUsers(null);
+            }
+        }
 
         return $this;
     }

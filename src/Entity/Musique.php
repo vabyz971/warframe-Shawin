@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,8 +44,25 @@ class Musique
      */
     private $difficulty;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="musiques")
+     */
+    private $idMusique;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="musique", orphanRemoval=true)
+     */
+    private $commented;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Link", mappedBy="musiqueLink")
+     */
+    private $links;
+
     public function __construct(){
         $this->created = new \DateTime();
+        $this->commented = new ArrayCollection();
+        $this->links = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -107,6 +126,80 @@ class Musique
     public function setCreated(\DateTimeInterface $created): self
     {
         $this->created = $created;
+
+        return $this;
+    }
+
+    public function getIdMusique(): ?user
+    {
+        return $this->idMusique;
+    }
+
+    public function setIdMusique(?user $idMusique): self
+    {
+        $this->idMusique = $idMusique;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getCommented(): Collection
+    {
+        return $this->commented;
+    }
+
+    public function addCommented(Comment $commented): self
+    {
+        if (!$this->commented->contains($commented)) {
+            $this->commented[] = $commented;
+            $commented->setMusique($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommented(Comment $commented): self
+    {
+        if ($this->commented->contains($commented)) {
+            $this->commented->removeElement($commented);
+            // set the owning side to null (unless already changed)
+            if ($commented->getMusique() === $this) {
+                $commented->setMusique(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Link[]
+     */
+    public function getLinks(): Collection
+    {
+        return $this->links;
+    }
+
+    public function addLink(Link $link): self
+    {
+        if (!$this->links->contains($link)) {
+            $this->links[] = $link;
+            $link->setMusiqueLink($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLink(Link $link): self
+    {
+        if ($this->links->contains($link)) {
+            $this->links->removeElement($link);
+            // set the owning side to null (unless already changed)
+            if ($link->getMusiqueLink() === $this) {
+                $link->setMusiqueLink(null);
+            }
+        }
 
         return $this;
     }
