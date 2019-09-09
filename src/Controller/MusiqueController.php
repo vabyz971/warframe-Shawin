@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Musique;
 use App\Repository\MusiqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,34 +23,36 @@ class MusiqueController extends AbstractController
     {
         $musiques = $repo->findAll();
 
-        return $this->render('musique/index.html.twig',[
+        return $this->render('musique/index.html.twig', [
             'current_menu' => 'musiques',
             'musiques' => $musiques
         ]);
     }
 
 
-     /**
+    /**
      * @Route("/musique/new", name="musique_created")
      * @Route("/musique/{id}/edit", name="musique_edit")
      */
-    public function create(Musique $musique = null ,Request $request, ObjectManager $manager){
+    public function create(Musique $musique = null, Request $request, ObjectManager $manager)
+    {
 
-        if(!$musique)
+        if (!$musique)
             $musique = new Musique();
 
         //Création d'un formulaire
         $form = $this->createFormBuilder($musique)
             ->add('title', TextType::class, ['label' => 'Titre'])
             ->add('description')
-            ->add('difficulty',ChoiceType::class, [
-              'choices' => [
-                'Extrême' => 'Extreme',
-                'Dur' => 'Hard',
-                'Intermédiaire' => 'Intermediate',
-                'Facile' => 'Easy',
-                'Très Facile' => 'Very Easy',
-              ],])
+            ->add('difficulty', ChoiceType::class, [
+                'choices' => [
+                    'Extrême' => 'Extreme',
+                    'Dur' => 'Hard',
+                    'Intermédiaire' => 'Intermediate',
+                    'Facile' => 'Easy',
+                    'Très Facile' => 'Very Easy',
+                ],
+            ])
             ->add('code')
             ->getForm();
 
@@ -57,9 +60,9 @@ class MusiqueController extends AbstractController
         $form->handleRequest($request);
 
         //Si le form a des informations
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
 
-            if(!$musique->getId())
+            if (!$musique->getId())
                 $musique->setCreated(new \DateTime());
 
             $manager->persist($musique);     // Persister les données
@@ -69,7 +72,7 @@ class MusiqueController extends AbstractController
             return $this->redirectToRoute('musique_detail', ['id' => $musique->getId()]);
         }
 
-        return $this->render("musique/create.html.twig",[
+        return $this->render("musique/create.html.twig", [
             'current_menu' => 'musique_new',
             'formMusique' => $form->createView(),
             'editMode' => $musique->getId() !== null
@@ -79,8 +82,9 @@ class MusiqueController extends AbstractController
     /**
      * @Route("/musique/{id}", name="musique_detail")
      */
-    public function details(Musique $musiques){
-        return $this->render("musique/detail.html.twig",[
+    public function details(Musique $musiques)
+    {
+        return $this->render("musique/detail.html.twig", [
             "musique" => $musiques
         ]);
     }

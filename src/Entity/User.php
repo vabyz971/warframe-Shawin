@@ -91,6 +91,11 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getNickname(): string
+    {
+        return (string) $this->username;
+    }
+
     /**
      * A visual identifier that represents this user.
      *

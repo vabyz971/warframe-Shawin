@@ -3,34 +3,66 @@
 {% block body %}
 
 
-<dir class="container">
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="card text-center">
-        <div class="card-header">
-          {% trans %}Auteur{% endtrans %} : #Users
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{% trans %}Titre {% endtrans %} : {{ musique.title }}</h5>
-          <p class="card-text">{% trans %}Code{% endtrans %}</p>
-          <p id="codeCp" class="card-text"> {{ musique.code }}</p>
-          <button type="button" onclick="copyToClipboard('#codeCp')" class="btn btn-outline-dark">Copy</button>
-        </div>
-        <div class="card-footer text-muted">
-          {{ musique.created | date('d/m/Y') }}
-        </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card" style="width: 18rem;">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">{% trans %}Description{% endtrans %} : </li>
-          <li class="list-group-item">{{ musique.description }}</li>
-          <li class="list-group-item">{% trans %}Difficulté{% endtrans %} : {{ musique.difficulty }}</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</dir>
+    <dir class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="card text-center">
+                    <div class="card-header">
+                        {% trans %}Auteur{% endtrans %}
+                        :
+                        {{ musique.idUser.nickname }}
 
+
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{% trans %}Titre
+                            {% endtrans %}
+                            :
+                            {{ musique.title }}</h5>
+                        <p class="card-text">{% trans %}Code{% endtrans %}</p>
+                        <p id="codeCp" class="card-text">
+                            {{ musique.code }}</p>
+                        <button type="button" onclick="copyToClipboard('#codeCp')" class="btn btn-outline-dark">Copy</button>
+                    </div>
+                    <div class="card-footer text-muted">
+                        {{ musique.created | date('d/m/Y') }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{% trans %}Description{% endtrans %}
+                            :
+                        </li>
+                        <li class="list-group-item">{{ musique.description }}</li>
+                        <li class="list-group-item">{% trans %}Difficulté{% endtrans %}
+                            :
+                            {{ musique.difficulty }}</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="my-4 p-6 bg-white rounded shadow-sm">
+
+                <h4 class="border-bottom border-gray pb-1 mb-0">Commentaire</h4>
+                {% for comment in musique.commented %}
+                    <div class="card">
+                        <div class="card-header">
+                            {{comment.author}}
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-2">
+                                {{comment.content}}
+                                <footer class="blockquote-footer">Posté le
+                                    {{ comment.createdAt | date('d/m/Y') }}
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </dir>
 {% endblock %}
