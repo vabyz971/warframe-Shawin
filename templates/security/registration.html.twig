@@ -3,15 +3,13 @@
 
 {% block body %}
 
-    <h1>Inscription !</h1>
 
+    {{ form_start(form, {attr: {'class': "form-signup"}}) }}
+      <h1>Inscription !</h1>
+    {{form_row(form.username, { 'label' : 'Pseudo','attr': {'placeholder': "Votre pseudo, In-Game de préférence"}})}}
+    {{form_row(form.email, {'label' : 'Email','attr': {'placeholder': "Email"}})}}
 
-    {{ form_start(form) }}
-
-    {{form_row(form.username, { 'label' : 'Pseudo','attr': {'placeholder': "Votre speudo (in-game) de préférence merci"}})}}
-    {{form_row(form.email, {'label' : 'Émail','attr': {'placeholder': "le vrai pas un faut"}})}}
-
-    {{form_row(form.password, {'label' : 'Mot de passe','attr': {'placeholder': "un qui soit bien complex"}})}}
+    {{form_row(form.password, {'label' : 'Mot de passe','attr': {'placeholder': "Au moins 8 caractères"}})}}
 
     {{form_row(form.confirm_password, {'label' : 'Comfirmer votre mot de passe','attr': {'placeholder': "Comfirmation du mot de passe"}})}}
 
