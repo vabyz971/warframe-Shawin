@@ -44,7 +44,7 @@ class MusiqueController extends AbstractController
         $form = $this->createFormBuilder($musique)
             ->add('title', TextType::class, ['label' => 'Titre'])
             ->add('description')
-            ->add('difficulty', ChoiceType::class, ['label' => 'Difficulté', 'choices' => 
+            ->add('difficulty', ChoiceType::class, ['label' => 'Difficulté', 'choices' =>
                 [
                     'Extrême' => 'Extreme',
                     'Dur' => 'Hard',
