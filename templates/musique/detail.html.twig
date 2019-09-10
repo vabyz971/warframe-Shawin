@@ -44,21 +44,18 @@
             </div>
 
 
-            <div class="my-4 p-6 bg-white rounded shadow-sm">
+            <div class="my-3 p-5 bg-white ">
 
-                <h4 class="border-bottom border-gray pb-1 mb-0">Commentaire</h4>
+                <h4 class="border-bottom border-gray pb-2 mb-1">Commentaire</h4>
                 {% for comment in musique.commented %}
-                    <div class="card">
-                        <div class="card-header">
-                            {{comment.author}}
-                        </div>
-                        <div class="card-body">
-                            <blockquote class="blockquote mb-2">
-                                {{comment.content}}
-                                <footer class="blockquote-footer">Posté le
-                                    {{ comment.createdAt | date('d/m/Y') }}
-                                </footer>
-                            </blockquote>
+                    <div class="media">
+                        <img src="/img/icon/users/Default.png" class="mr-1" style="width: 32px;">
+
+                        <div class="media-body">
+                            <h5 class="mt-0">{{comment.author}}</h5>
+                            {{comment.content}}
+                            <p class="blockquote-footer">Posté le
+                                {{ comment.createdAt | date('d/m/Y') }}</p>
                         </div>
                     </div>
                 {% endfor %}
