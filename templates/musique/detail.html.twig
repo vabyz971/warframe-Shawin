@@ -5,7 +5,7 @@
 
     <dir class="container">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <div class="card text-center">
                     <div class="card-header">
                         {% trans %}Auteur{% endtrans %}
@@ -19,20 +19,20 @@
                             {% endtrans %}
                             :
                             {{ musique.title }}</h5>
-                        <p class="card-text">{% trans %}Code{% endtrans %}</p>
-                        <p id="codeCp" class="card-text">
+                        <p class="card-text-detail" style="text-align : left;color:blue;">{% trans %}Code:{% endtrans %}</p>
+                        <p id="codeCp" class="card-text-detail" style="text-align : left;">
                             {{ musique.code }}</p>
-                        <button type="button" onclick="copyToClipboard('#codeCp')" class="btn btn-outline-dark">Copy</button>
+                        <button type="button" onclick="copyToClipboard('#codeCp')" class="btn btn-outline-dark">Copier</button>
                     </div>
                     <div class="card-footer text-muted">
                         {{ musique.created | date('d/m/Y') }}
                     </div>
                 </div>
             </div>
-            <div class="col-sm">
-                <div class="card" style="width: 18rem;">
+            <div class="col-sm-5">
+                <div class="card">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{% trans %}Description{% endtrans %}
+                        <li class="list-group-item" style="color:blue;">{% trans %}Description{% endtrans %}
                             :
                         </li>
                         <li class="list-group-item">{{ musique.description }}</li>
@@ -45,7 +45,6 @@
 
 
             <div class="my-4 p-6 bg-white rounded shadow-sm">
-
                 <h4 class="border-bottom border-gray pb-1 mb-0">Commentaire</h4>
                 {% for comment in musique.commented %}
                     <div class="card">
