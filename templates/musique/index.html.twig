@@ -16,56 +16,48 @@
 
             {% for musique in musiques %}
 
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <a href="{{ path ('musique_detail', {id:musique.id}) }}">
-                        <img class="card-img-top" src="{{ musique.visual }}" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="{{ path ('musique_detail', {id:musique.id}) }}">{{ musique.title }}</a>
-                        </h4>
-                        <h5>{%trans%}Auteur{%endtrans%}
-                            :
-                            {{ musique.idUser.nickname }}</h5>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <a href="{{ path ('musique_detail', {id:musique.id}) }}">
+                            <img class="card-img-top" src="{{ musique.visual }}" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ path ('musique_detail', {id:musique.id}) }}">{{ musique.title }}</a>
+                            </h4>
+                            <h5>{%trans%}Auteur{%endtrans%}
+                                :
+                                {{ musique.idUser.nickname }}</h5>
 
-                        <p class="card-text">{{ musique.difficulty }}</p>
-                        <p class="card-text">{{ musique.description }}</p>
-                        <p class="card-text">{{ musique.code }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="row">
-                            <div class="col-lg">
-                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button">
-                                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                                        <button type="button" class="btn ">
-                                            <svg id="i-heart" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                                <path d="M4 16 C1 12 2 6 7 4 12 2 15 6 16 8 17 6 21 2 26 4 31 6 31 12 28 16 25 20 16 28 16 28 16 28 7 20 4 16 Z"/>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn ">
-                                            <svg id="i-msg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                                <path d="M2 4 L30 4 30 22 16 22 8 29 8 22 2 22 Z"/>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn">
-                                            <svg id="i-music" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                                <path d="M11 25 L11 6 24 3 24 23 M11 13 L24 10"/>
-                                                <ellipse cx="7" cy="25" rx="4" ry="5"/>
-                                                <ellipse cx="20" cy="23" rx="4" ry="5"/>
-                                            </svg>
-                                        </button>
+                            <p class="card-text">{{ musique.difficulty }}</p>
+                            <p class="card-text">{{ musique.description }}</p>
+                            <p class="card-text">{{ musique.code }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-lg">
+                                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button">
+                                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                                            <button type="button" class="btn ">
+                                                <i class="far fa-heart"></i>
+                                            </button>
+                                            <a href="{{ path ('musique_detail', {id:musique.id}) }}" class="btn ">
+                                                <i class="far fa-comment"></i>
+                                                <span class="badge badge-primary">
+                                                    {{ musique.commented | length }}
+                                                </span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-6 d-flex align-items-center">
-                                <small class="text-muted">Crée le
-                                    {{ musique.created | date('d/m/Y') }}</small>
-                            </div>
+                                <div class="col-6 d-flex align-items-center">
+                                    <small class="text-muted">Crée le
+                                        {{ musique.created | date('d/m/Y') }}</small>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
             {% endfor %}
 

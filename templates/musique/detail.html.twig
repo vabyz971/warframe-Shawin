@@ -20,9 +20,10 @@
                             :
                             {{ musique.title }}</h5>
                         <p class="card-text-detail" style="text-align : left;color:blue;">{% trans %}Code:{% endtrans %}</p>
-                        <p id="codeCp" class="card-text-detail" style="text-align : left;">
-                            {{ musique.code }}</p>
-                        <button type="button" onclick="copyToClipboard('#codeCp')" class="btn btn-outline-dark">Copier</button>
+                        <p id="codeCp" class="card-text-detail">{{ musique.code }}</p>
+                        <button type="button" onclick="copyToClipboard('#codeCp')" class="btn btn-outline-dark">Copier
+                            <i class="fas fa-link"></i>
+                        </button>
                     </div>
                     <div class="card-footer text-muted">
                         {{ musique.created | date('d/m/Y') }}
@@ -44,22 +45,40 @@
             </div>
 
 
-            <div class="my-3 p-5 bg-white ">
+            <section>
+                <div class="my-3 p-5 bg-white ">
+                    <h4 class="border-bottom border-gray pb-2 mb-3">Commentaire</h4>
+                    <p class="pb-3 mb-3">il y a
+                        {{ musique.commented | length }}
+                        commentaire
+                    </p>
 
-                <h4 class="border-bottom border-gray pb-2 mb-1">Commentaire</h4>
-                {% for comment in musique.commented %}
-                    <div class="media">
-                        <img src="/img/icon/users/Default.png" class="mr-1" style="width: 32px;">
+                    {% for comment in musique.commented %}
+                        <div class="media">
+                            <img src="/img/icon/users/Default.png" class="mr-1" style="width: 32px;">
 
-                        <div class="media-body">
-                            <h5 class="mt-0">{{comment.author}}</h5>
-                            {{comment.content}}
-                            <p class="blockquote-footer">Posté le
-                                {{ comment.createdAt | date('d/m/Y') }}</p>
+                            <div class="media-body">
+                                <h5 class="mt-0">{{comment.author}}</h5>
+                                {{comment.content}}
+                                <p class="blockquote-footer">Posté le
+                                    {{ comment.createdAt | date('d/m/Y') }}</p>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
+                    {% endfor %}
+
+                    {% if app.user %}
+
+                        {{ form_start(commentForm) }}
+                        {{ form_row(commentForm.content, {'label' : 'Commenter'}) }}
+                        <button type="submit" class="btn btn-success">Commenter !</button>
+                        {{ form_end(commentForm) }}
+
+                    {% else %}
+                        <h5>Vous devez être connecter pour commenter</h5>
+                        <a class="btn btn-secondary" href="{{path('security_login')}}" role="button">connecter vous</a>
+                    {% endif %}
+                </div>
+            </section>
         </div>
     </dir>
 {% endblock %}

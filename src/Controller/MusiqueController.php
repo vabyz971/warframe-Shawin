@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Entity\Musique;
+use App\Entity\User;
+use App\Form\CommentType;
 use App\Repository\MusiqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -11,7 +13,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
-
 
 class MusiqueController extends AbstractController
 {
@@ -21,6 +22,7 @@ class MusiqueController extends AbstractController
      */
     public function index(MusiqueRepository $repo)
     {
+        //Pagination des element retourner
         $musiques = $repo->findAll();
 
         return $this->render('musique/index.html.twig', [
@@ -44,7 +46,8 @@ class MusiqueController extends AbstractController
         $form = $this->createFormBuilder($musique)
             ->add('title', TextType::class, ['label' => 'Titre'])
             ->add('description')
-            ->add('difficulty', ChoiceType::class, ['label' => 'Difficulté', 'choices' =>
+            ->add('difficulty', ChoiceType::class, [
+                'label' => 'Difficulté', 'choices' =>
                 [
                     'Extrême' => 'Extreme',
                     'Dur' => 'Hard',
@@ -82,10 +85,30 @@ class MusiqueController extends AbstractController
     /**
      * @Route("/musique/{id}", name="musique_detail")
      */
-    public function details(Musique $musiques)
+    public function details(Musique $musiques, Request $request, ObjectManager $manager)
     {
+        $user = new User();
+
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $comment->setCreatedAt(new \DateTime())
+                ->setMusique($musiques);
+
+            $manager->persist($comment);
+            $manager->flush();
+
+
+            return $this->redirectToRoute('musique_detail', ['id' => $musiques->getId()]);
+        }
+
         return $this->render("musique/detail.html.twig", [
-            "musique" => $musiques
+            "musique" => $musiques,
+            "commentForm" => $form->createView()
         ]);
     }
 }

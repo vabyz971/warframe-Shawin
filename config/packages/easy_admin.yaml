@@ -1,0 +1,19 @@
+easy_admin:
+    user:
+        name_property_path: 'fullName'
+        display_name: true
+        display_avatar: false
+    entities:
+        Musique:
+            class: App\Entity\Musique
+            form:
+                fields:
+                    - {property: 'title'}
+                    - {property: 'difficulty'}
+                    - {property: 'description'}
+                    - {property: 'code'}
+
+    design:
+        assets:
+            css:
+                - 'public/css/admin.css'

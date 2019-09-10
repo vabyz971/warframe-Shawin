@@ -73,7 +73,7 @@ text-overflow: ellipsis;
 }
 
 
-.user-link svg{
+.user-link i{
   width: 16px;
   transform: translate(0px, 10px);
   stroke-width: 3px;

@@ -16,7 +16,7 @@ class MusiqueFixtures extends Fixture
         $faker = \Faker\Factory::create('fr_FR');
 
         // Création des utilisateurs
-        for ($us = 1; $us < 5; $us++) {
+        for ($us = 1; $us < 10; $us++) {
 
             $users = new User();
             $users->setEmail($faker->email)
@@ -27,7 +27,7 @@ class MusiqueFixtures extends Fixture
             $manager->persist($users);
 
             // Création des musiques
-            for ($i = 1; $i < 3; $i++) {
+            for ($i = 1; $i < 10; $i++) {
                 $musique = new Musique();
                 $musique->setTitle($faker->sentence())
                     ->setDescription($faker->paragraph())
@@ -41,7 +41,7 @@ class MusiqueFixtures extends Fixture
                 $manager->persist($musique);
 
                 // Ajouter des commentaires au musique
-                for ($j = 1; $j <= mt_rand(4, 6); $j++) {
+                for ($j = 1; $j <= mt_rand(4, 10); $j++) {
                     $comment = new Comment();
 
                     $content = join($faker->paragraphs(2));
