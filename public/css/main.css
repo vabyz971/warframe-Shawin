@@ -24,6 +24,19 @@ body{
   margin-bottom:1%;
 }
 
+.form-signup button{
+  background-color: green;
+}
+
+.form-signup button:hover{
+  background-color: black;
+}
+
+.form-signup input{
+  margin:1%;
+}
+
+
 /** Cards **/
 .Card {
   width:20%;
@@ -41,8 +54,6 @@ text-overflow: ellipsis;
 
 .Commentaire{
 width:100%;
-
-
 }
 
 
@@ -55,12 +66,11 @@ width:100%;
 }
 
 .user_name{
-  transform: translate(20px, 0px);
+  transform: translate(92px, -30px);
   color: white;
-  font-weight: 500;
+  font-weight: 900;
   font-size: medium;
   padding: 0;
-  margin: 0;
 
 }
 
@@ -73,9 +83,29 @@ width:100%;
     width: 42px;
 }
 
-
 .user-link i{
   width: 16px;
   transform: translate(0px, 10px);
   stroke-width: 3px;
+}
+
+.user-pp {
+  height: 50px;
+  width: 100px;
+}
+
+
+/**Video responsive**/
+.iframe-container{
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.iframe-container iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 90%;
+  height: 100%;
 }
