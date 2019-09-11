@@ -39,10 +39,11 @@ white-space: nowrap;
 text-overflow: ellipsis;
 }
 
-#card-description {
-  width: 300000px;
-}
+.Commentaire{
+width:100%;
 
+
+}
 
 
 /** Card User **/
@@ -78,4 +79,3 @@ text-overflow: ellipsis;
   transform: translate(0px, 10px);
   stroke-width: 3px;
 }
-

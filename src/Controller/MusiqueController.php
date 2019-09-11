@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Form\CommentType;
 use App\Repository\MusiqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,9 +37,9 @@ class MusiqueController extends AbstractController
      * @Route("/musique/new", name="musique_created")
      * @Route("/musique/{id}/edit", name="musique_edit")
      */
-    public function create(Musique $musique = null, Request $request, ObjectManager $manager)
+    public function create(Musique $musique = null, Request $request, ObjectManager $manager,TokenStorageInterface $tokenStorage)
     {
-
+        $user = $tokenStorage->getToken() ? $tokenStorage->getToken()->getUser() : null;
         if (!$musique)
             $musique = new Musique();
 
@@ -65,8 +66,10 @@ class MusiqueController extends AbstractController
         //Si le form a des informations
         if ($form->isSubmitted() && $form->isValid()) {
 
-            if (!$musique->getId())
-                $musique->setCreated(new \DateTime());
+            if (!$musique->getId()){
+                $musique->setCreated(new \DateTime())
+                        ->setIdUser($user);
+              }
 
             $manager->persist($musique);     // Persister les données
             $manager->flush();              //Envoie des données
@@ -85,9 +88,11 @@ class MusiqueController extends AbstractController
     /**
      * @Route("/musique/{id}", name="musique_detail")
      */
-    public function details(Musique $musiques, Request $request, ObjectManager $manager)
+
+    public function details(Musique $musiques, Request $request, ObjectManager $manager,TokenStorageInterface $tokenStorage)
     {
-        $user = new User();
+
+        $user = $tokenStorage->getToken() ? $tokenStorage->getToken()->getUser() : null;
 
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -97,7 +102,9 @@ class MusiqueController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $comment->setCreatedAt(new \DateTime())
-                ->setMusique($musiques);
+                    ->setMusique($musiques)
+                    ->setAuthor($user->getUsername())
+                    ->setUsers($user);
 
             $manager->persist($comment);
             $manager->flush();
