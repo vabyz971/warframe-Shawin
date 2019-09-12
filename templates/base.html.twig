@@ -41,25 +41,23 @@
                         <a class="btn btn-secondary" href="{{path('security_login')}}" role="button">Connexion</a>
                     </span>
                 {% else %}
-                    <span class="navbar-text">
-                        <div class="user-statue">
-                            <dir class="user_name">
-                                <p>{{ app.user.Nickname }}
-                                </p>
-                            </dir>
-                            <dir class="user-link">
-                                <a href="/admin">
-                                    <i class="fas fa-cog"></i>
-                                </a>
 
-                                <img class="user-pp" src="/img/icon/users/Default.png" alt="">
-                                <a class="user-logout" href="{{path('security_logout')}}">
-                                    <i class="fas fa-sign-out-alt"></i>
-                                </a>
+                    <div class="user-statue">
+                        <dir class="user-name">
+                            <p>{{ app.user.Nickname }}
+                            </p>
+                        </dir>
+                        <dir class="user-link">
+                            <a href="">
+                                <i class="fas fa-cog"></i>
+                            </a>
 
-                            </dir>
-                        </div>
-                    </span>
+                            <img src="/img/icon/users/Default.png" alt="">
+                            <a class="user-logout" href="{{path('security_logout')}}">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                        </dir>
+                    </div>
 
                 {% endif %}
             </div>

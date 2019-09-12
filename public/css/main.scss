@@ -1,0 +1,40 @@
+
+body{
+    padding-top: 3.5rem;
+}
+
+
+
+//** Div user Nav-Bar **//
+
+.user-statue{
+    display: flex;
+    padding-right: 3rem;
+    align-items: center;
+
+    .user-name{
+        transform: translate(20px, -5px);
+        color: white;
+        font-weight: 400;
+        font-size: medium;
+        padding: 0px;
+    }
+
+
+    .user-link{
+        padding: 0px 5px;
+        margin: 0px;
+    }
+
+    .user-link img{
+        width: 42px;
+    }
+
+    .user-link i{
+        color: white;
+        width: 16px;
+        transform: translate(0px, 10px);
+        stroke-width: 3px;
+    }
+
+}

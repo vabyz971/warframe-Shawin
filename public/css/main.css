@@ -1,111 +1,40 @@
-body{
-    padding-top: 3.5rem;
+body {
+  padding-top: 3.5rem;
 }
 
-.row {
-  margin-top: 8%;
-}
-
-.jumbotron  {
-    /*background-image: url(../img/background/Warframe0001.jpg);*/
-    background-position: -50px -190px;
-    background-repeat: no-repeat;
-
-}
-
-
-/**Form **/
-.form-signup{
-  padding: 15px;
-  text-align:center;
-  margin-left:25%;
-  margin-right:25%;
-  margin-top:1%;
-  margin-bottom:1%;
-}
-
-.form-signup button{
-  background-color: green;
-}
-
-.form-signup button:hover{
-  background-color: black;
-}
-
-.form-signup input{
-  margin:1%;
-}
-
-
-/** Cards **/
-.Card {
-  width:20%;
-  margin-left:1%;
-  margin-right:1%;
-}
-
-.card-text {
-display: block;
-width: 100%;
-overflow: hidden;
-white-space: nowrap;
-text-overflow: ellipsis;
-}
-
-.Commentaire{
-width:100%;
-}
-
-
-/** Card User **/
-
-.user-statue{
+.user-statue {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding-right: 3rem;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.user_name{
-  transform: translate(92px, -30px);
+.user-statue .user-name {
+  -webkit-transform: translate(20px, -5px);
+          transform: translate(20px, -5px);
   color: white;
-  font-weight: 900;
+  font-weight: 400;
   font-size: medium;
-  padding: 0;
-
+  padding: 0px;
 }
 
-.user-link{
+.user-statue .user-link {
   padding: 0px 5px;
-  margin: 0;
+  margin: 0px;
 }
 
-.user-link img{
-    width: 42px;
+.user-statue .user-link img {
+  width: 42px;
 }
 
-.user-link i{
+.user-statue .user-link i {
+  color: white;
   width: 16px;
-  transform: translate(0px, 10px);
+  -webkit-transform: translate(0px, 10px);
+          transform: translate(0px, 10px);
   stroke-width: 3px;
 }
-
-.user-pp {
-  height: 50px;
-  width: 100px;
-}
-
-
-/**Video responsive**/
-.iframe-container{
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  height: 0;
-}
-.iframe-container iframe{
-  position: absolute;
-  top:0;
-  left: 0;
-  width: 90%;
-  height: 100%;
-}
+/*# sourceMappingURL=main.css.map */

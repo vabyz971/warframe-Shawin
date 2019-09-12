@@ -3,19 +3,24 @@
 
 {% block body %}
 
+    <div class="container">
 
-    {{ form_start(form, {attr: {'class': "form-signup"}}) }}
-      <h1>Inscription !</h1>
-    {{form_row(form.username, { 'label' : 'Pseudo','attr': {'placeholder': "Votre pseudo, In-Game de préférence"}})}}
-    {{form_row(form.email, {'label' : 'Email','attr': {'placeholder': "Email"}})}}
+        <section class="p-4">
 
-    {{form_row(form.password, {'label' : 'Mot de passe','attr': {'placeholder': "Au moins 8 caractères"}})}}
+            {{ form_start(form) }}
+            <h1>Inscription !</h1>
+            {{form_row(form.username, { 'label' : 'Pseudo','attr': {'placeholder': "Votre pseudo, In-Game de préférence"}})}}
+            {{form_row(form.email, {'label' : 'Email','attr': {'placeholder': "Email"}})}}
 
-    {{form_row(form.confirm_password, {'label' : 'Comfirmer votre mot de passe','attr': {'placeholder': "Comfirmation du mot de passe"}})}}
+            {{form_row(form.password, {'label' : 'Mot de passe','attr': {'placeholder': "Au moins 8 caractères"}})}}
+
+            {{form_row(form.confirm_password, {'label' : 'Comfirmer votre mot de passe','attr': {'placeholder': "Comfirmation du mot de passe"}})}}
 
 
-    <button type="submit" class="btn btn-success">Inscription</button>
-    {{ form_end(form) }}
+            <button type="submit" class="btn btn-success">Inscription</button>
+            {{ form_end(form) }}
 
+        </div>
+    </div>
 
 {% endblock %}

@@ -4,25 +4,36 @@
 
 {% block body %}
 
+    <div
+        class="container">
+        <!-- Content here -->
+        <section class="align-self-center p-5">
+            <h2 class="h3 mb-3 font-weight-normal">{%trans%}Ajout d'une musique{%endtrans%}</h2>
 
-    {{ form_start(formMusique,  {attr: {'class': "form-signup"}}) }}
-    <h2>{%trans%}Ajout d'une musique{%endtrans%}</h2>
-    {{ form_row(formMusique.title, {'attr': {'placeholder': "Titre de la musique (50 caractères max)",'maxlength': "50"}})}}
-    {{ form_row(formMusique.difficulty)}}
-    {{ form_row(formMusique.description,{'attr': {'placeholder': "Décrivez votre musique !",'style' : "height:12rem;"}})}}
-    {{ form_row(formMusique.code,{'attr': {'placeholder': "Exemple:
+            <div class="col-sm-10">
+
+
+                {{ form_start(formMusique,  {attr: {'class': "form-group"}}) }}
+                {{ form_row(formMusique.title, {'attr': {'placeholder': "Titre de la musique (50 caractères max)",'maxlength': "50"}})}}
+                {{ form_row(formMusique.difficulty)}}
+                {{ form_row(formMusique.description,{'attr': {'placeholder': "Décrivez votre musique !",'style' : "height:12rem;"}})}}
+                {{ form_row(formMusique.code,{'attr': {'placeholder': "Exemple:
     4BAABADkAHiAMhAVUAbSAhRAnSAqUAtCAxCAzkA3iA9hBHUBPSBURBbSBdUBgEBlEBnkBsiByhB7UCCSCIRCOSCRUCUBCZBCckChiCnhCwUC2SC8RDCSDFUDI
 ",'style' : "height:13rem;"}}) }}
 
-    <button type="submit" class="btn btn-primary">
-        {% if editMode %}
-            Enregister les modifications
-        {% else %}
-            {%trans%} Ajouter la musique {%endtrans%}
-        {% endif %}
+                <button type="submit" class="btn btn-primary">
+                    {% if editMode %}
+                        Enregister les modifications
+                    {% else %}
+                        {%trans%}
+                        Ajouter la musique
+                        {%endtrans%}
+                    {% endif %}
 
-    </button>
+                </button>
 
-    {{ form_end(formMusique) }}
-
+                {{ form_end(formMusique) }}
+            </div>
+        </section>
+    </div>
 {% endblock %}
