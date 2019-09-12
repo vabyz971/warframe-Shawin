@@ -23,7 +23,6 @@ class MusiqueController extends AbstractController
      */
     public function index(MusiqueRepository $repo)
     {
-        //Pagination des element retourner
         $musiques = $repo->findAll();
 
         return $this->render('musique/index.html.twig', [
@@ -37,7 +36,7 @@ class MusiqueController extends AbstractController
      * @Route("/musique/new", name="musique_created")
      * @Route("/musique/{id}/edit", name="musique_edit")
      */
-    public function create(Musique $musique = null, Request $request, ObjectManager $manager,TokenStorageInterface $tokenStorage)
+    public function create(Musique $musique = null, Request $request, ObjectManager $manager, TokenStorageInterface $tokenStorage)
     {
         $user = $tokenStorage->getToken() ? $tokenStorage->getToken()->getUser() : null;
         if (!$musique)
@@ -66,10 +65,10 @@ class MusiqueController extends AbstractController
         //Si le form a des informations
         if ($form->isSubmitted() && $form->isValid()) {
 
-            if (!$musique->getId()){
+            if (!$musique->getId()) {
                 $musique->setCreated(new \DateTime())
-                        ->setIdUser($user);
-              }
+                    ->setIdUser($user);
+            }
 
             $manager->persist($musique);     // Persister les données
             $manager->flush();              //Envoie des données
@@ -89,7 +88,7 @@ class MusiqueController extends AbstractController
      * @Route("/musique/{id}", name="musique_detail")
      */
 
-    public function details(Musique $musiques, Request $request, ObjectManager $manager,TokenStorageInterface $tokenStorage)
+    public function details(Musique $musiques, Request $request, ObjectManager $manager, TokenStorageInterface $tokenStorage)
     {
 
         $user = $tokenStorage->getToken() ? $tokenStorage->getToken()->getUser() : null;
@@ -102,9 +101,9 @@ class MusiqueController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $comment->setCreatedAt(new \DateTime())
-                    ->setMusique($musiques)
-                    ->setAuthor($user->getUsername())
-                    ->setUsers($user);
+                ->setMusique($musiques)
+                ->setAuthor($user->getUsername())
+                ->setUsers($user);
 
             $manager->persist($comment);
             $manager->flush();

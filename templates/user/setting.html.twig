@@ -1,0 +1,125 @@
+{% extends 'dashboard.html.twig' %}
+
+
+{% block body %}
+
+
+    <div class="row">
+        <div class="col-sm-2 d-none d-md-block bg-light sidebar position-fixed">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#dashboard-tab">Dashboard</a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#profile-tab">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#musiques-tab">Musiques</a>
+                </li>
+            </ul>
+
+        </div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="col-sm">
+                <section id="dashboard-tab">
+                    <div class="row">
+                        <div class="card m-3 bg-primary text-white">
+                            <h5 class="card-header">Nombre de musique</h5>
+                            <div class="card-body">
+                                <h5 class="card-title">5 Musiques</h5>
+                            </div>
+                        </div>
+                        <div class="card m-3 bg-success text-white">
+                            <h5 class="card-header">Nombre de j'aime</h5>
+                            <div class="card-body">
+                                <h5 class="card-title">154 j'aime</h5>
+                                <p class="card-text">le totale de tout les j'aime sur vos musique</p>
+                            </div>
+                        </div>
+                        <div class="card m-3 bg-dark text-white">
+                            <h5 class="card-header">Nombre de vue</h5>
+                            <div class="card-body">
+                                <h5 class="card-title">154 vue</h5>
+                                <p class="card-text">le totale de tout les vue sur vos musique</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="profile-tab">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Email</label>
+                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Password</label>
+                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="inputAddress">Pseudo</label>
+                            <input type="text" class="form-control" id="inputAddress">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Modifier</button>
+                    </form>
+                </section>
+
+                <section id="musiques-tab">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">{% trans %}
+                                    Titre
+                                    {% endtrans %}</th>
+                                <th scope="col">{% trans %}
+                                    Auteur
+                                    {% endtrans %}</th>
+                                <th scope="col">{% trans %}
+                                    Difficulté
+                                    {% endtrans %}</th>
+                                <th scope="col">{% trans %}
+                                    Date
+                                    {% endtrans %}</th>
+                                <th scope="col">{% trans %}
+                                    Code
+                                    {% endtrans %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id=""></section>
+            </div>
+        </main>
+    </div>
+
+{% endblock %}
