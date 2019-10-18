@@ -37,6 +37,15 @@ class MusiqueRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function countMusiques($userid) {
+        return $this->createQueryBuilder('m')
+            ->select('count(m.id)')
+            ->where('m.idUser = :user_id')
+            ->setParameter('user_id', $userid)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Musique[] Returns an array of Musique objects
     //  */
