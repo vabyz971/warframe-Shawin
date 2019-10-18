@@ -3,7 +3,7 @@
 
 {% block body %}
 
-
+<section class="jumbotron">
     <div class="row">
         <div class="col-sm-2 d-none d-md-block bg-light sidebar position-fixed">
             <ul class="nav flex-column">
@@ -27,9 +27,8 @@
                         <div class="card m-3 bg-primary text-white">
                             <h5 class="card-header">Nombre de musique</h5>
                             <div class="card-body">
-
-                                
                                 <h5 class="card-title">{{nombreMusiques}}</h5>
+                                <p class="card-text">le totale de vos musiques </p>
                             </div>
                         </div>
                         <div class="card m-3 bg-success text-white">
@@ -65,19 +64,16 @@
                             <input type="text" class="form-control" id="inputAddress">
                         </div>
                         <button type="submit" class="btn btn-primary">Modifier</button>
+                        <br><br>
                     </form>
                 </section>
 
                 <section id="musiques-tab">
                     <table class="table">
                         <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">#</th>
+                          <tr>
                                 <th scope="col">{% trans %}
                                     Titre
-                                    {% endtrans %}</th>
-                                <th scope="col">{% trans %}
-                                    Auteur
                                     {% endtrans %}</th>
                                 <th scope="col">{% trans %}
                                     Difficulté
@@ -90,38 +86,22 @@
                                     {% endtrans %}</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td>@fat</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                        </tbody>
+                        {% for m in myMusics %}
+                            <tbody>
+                                <tr>
+                                    <td scope="row">{{ m.title }}</td>
+                                    <td>{{ m.difficulty }}</td>
+                                    <td>{{ m.created|date('d/m/Y') }}</td>
+                                    <td>{{ m.code }}</td>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                        
                     </table>
                 </section>
-
-                <section id=""></section>
             </div>
         </main>
     </div>
+</section>
 
 {% endblock %}

@@ -19,11 +19,13 @@ class UserController extends AbstractController
         $curUser = $tokenStorage->getToken() ? $tokenStorage->getToken()->getUser() : null;
         $user = $repoU->findAll();
         $nbMusiques = $repoM->countMusiques($curUser->getId());
+        $myMusics = $repoM->myMusics($curUser->getId());
 
         return $this->render('user/setting.html.twig', [
             'controller_name' => 'UserController',
             'user_infos' => $user,
             'nombreMusiques' => $nbMusiques,
+             'myMusics' => $myMusics
         ]);
     }
 }

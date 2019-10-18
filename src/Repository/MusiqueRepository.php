@@ -45,6 +45,14 @@ class MusiqueRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+    
+    public function myMusics($userid){
+        return $this->createQueryBuilder('m')
+            ->where('m.idUser = :user_id')
+            ->setParameter('user_id', $userid)
+            ->getQuery()
+            ->getArrayResult();
+    }
 
     // /**
     //  * @return Musique[] Returns an array of Musique objects

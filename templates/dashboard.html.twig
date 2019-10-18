@@ -1,80 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% block title %}
-    <title>
-        Warframe shawzinu
-    </title>
-    {% endblock %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% block stylesheets %}
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    {% endblock %}
+        {% block title %}
+            <title>
+                Warframe shawzinu
+            </title>
+        {% endblock %}
 
+        {% block stylesheets %}
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% endblock %}
+    </head>
 
-</head>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">Warframe Shawzinu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-{% if app.user %}
-
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-
-    <h3 class="navbar-brand">Tableau de bord</h3>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Pages
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{path('home')}}">Accueil</a>
-                    <a class="dropdown-item" href="{{path('musique')}}">Musique</a>
-                </div>
-            </li>
-        </ul>
-        <div class="form-inline my-2 my-lg-0">
-            <ul class="navbar-nav px-3">
-                <li class="nav-item text-nowrap">
-                    <a class="nav-link" href="{{path('security_logout')}}">Déconnexion</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if current_menu is defined and current_menu == " musiques" %} active {% endif %} " href=" {{path('musique')}} ">
+                        {%trans%}Les musiques{%endtrans%}</a>
                 </li>
+                {% if app.user  %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if current_menu is defined and current_menu == " musique_new" %} active {% endif %} " href=" {{path('musique_created')}} ">{%trans%}Ajouter une musique{%endtrans%}</a>
+                    </li>
+                {% endif %}
             </ul>
+
+            {% if not app.user %}
+
+                <span class="navbar-text">
+                    <a class="btn btn-secondary" href="{{path('security_register')}}" role="button">Inscription</a>
+                    <a class="btn btn-secondary" href="{{path('security_login')}}" role="button">Connexion</a>
+                </span>
+            {% else %}
+
+                <div class="user-statue">
+                    <dir class="user-name">
+                        <p>{{ app.user.Nickname }}
+                        </p>
+                    </dir>
+                    <dir class="user-link">
+                        <a href="{{path('user_setting')}}">
+                            <i class="fas fa-cog"></i>
+                        </a>
+
+                        <img src="/img/icon/users/Default.png" alt="">
+                        <a class="user-logout" href="{{path('security_logout')}}">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </dir>
+                </div>
+
+            {% endif %}
         </div>
-    </div>
-</nav>
+    </nav>
+
+    <body class="p-top-3"> {% block body %}{% endblock %}
+
+        </body>
 
 
-<body class="p-top-4">
-    <div class="container-fluid">
-        {% block body %}{% endblock %}
-    </div>
-
-    {% block javascripts %}
-    <script src="/js/javascript.js"></script>
-    <script src="https://kit.fontawesome.com/ee8d4b5e17.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    {% endblock %}
-
-    {% endif %}
-
+        {% block javascripts %}
+            <script src="/js/javascript.js"></script>
+            <script src="https://kit.fontawesome.com/ee8d4b5e17.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        {% endblock %}
+    </html>
 </body>
+{% block footer %}
 
-</html>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Warframe shawzinu 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+{% endblock %}</html>
