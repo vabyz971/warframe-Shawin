@@ -1,91 +1,145 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        {% block title %}
-            <title>
-                Warframe shawzinu
-            </title>
-        {% endblock %}
+    {% block title %}
+    <title>
+        Warframe shawzinu
+    </title>
+    {% endblock %}
 
-        {% block stylesheets %}
-            <link rel="stylesheet" href="/css/main.css">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        {% endblock %}
-    </head>
+    {% block stylesheets %}
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% endblock %}
+</head>
 
+<body>
+
+    <!--
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="/">Warframe Shawzinu</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link {% if current_menu is defined and current_menu == " musiques" %} active {% endif %} " href=" {{path('musique')}} ">
+                    <a class="nav-link {% if current_menu is defined and current_menu == " musiques" %} active {% endif %} "
+                        href=" {{path('musique')}} ">
                         {%trans%}Les musiques{%endtrans%}</a>
                 </li>
                 {% if app.user  %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if current_menu is defined and current_menu == " musique_new" %} active {% endif %} " href=" {{path('musique_created')}} ">{%trans%}Ajouter une musique{%endtrans%}</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if current_menu is defined and current_menu == " musique_new" %} active {% endif %} "
+                        href=" {{path('musique_created')}} ">{%trans%}Ajouter une musique{%endtrans%}</a>
+                </li>
                 {% endif %}
             </ul>
 
             {% if not app.user %}
 
-                <span class="navbar-text">
-                    <a class="btn btn-secondary" href="{{path('security_register')}}" role="button">Inscription</a>
-                    <a class="btn btn-secondary" href="{{path('security_login')}}" role="button">Connexion</a>
-                </span>
+            <span class="navbar-text">
+                <a class="btn btn-secondary" href="{{path('security_register')}}" role="button">Inscription</a>
+                <a class="btn btn-secondary" href="{{path('security_login')}}" role="button">Connexion</a>
+            </span>
             {% else %}
 
-                <div class="user-statue">
-                    <dir class="user-name">
-                        <p>{{ app.user.Nickname }}
-                        </p>
-                    </dir>
-                    <dir class="user-link">
-                        <a href="{{path('user_setting')}}">
-                            <i class="fas fa-cog"></i>
-                        </a>
+            <div class="user-statue">
+                <dir class="user-name">
+                    <p>{{ app.user.Nickname }}
+                    </p>
+                </dir>
+                <dir class="user-link">
+                    <a href="{{path('user_setting')}}">
+                        <i class="fas fa-cog"></i>
+                    </a>
 
-                        <img src="/img/icon/users/Default.png" alt="">
-                        <a class="user-logout" href="{{path('security_logout')}}">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </a>
-                    </dir>
-                </div>
+                    <img src="/img/icon/users/Default.png" alt="">
+                    <a class="user-logout" href="{{path('security_logout')}}">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </dir>
+            </div>
 
             {% endif %}
         </div>
     </nav>
-
-    <body class="p-top-3"> {% block body %}{% endblock %}
-
-        </body>
-
-
-        {% block javascripts %}
-            <script src="/js/javascript.js"></script>
-            <script src="https://kit.fontawesome.com/ee8d4b5e17.js"></script>
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        {% endblock %}
-    </html>
-</body>
-{% block footer %}
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Warframe shawzinu 2019</p>
+-->
+    <div class="wrapper closeNav">
+        <div class="top_navbar">
+            <div class="hamburger" onclick="NavBarToggle()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="top_menu">
+                <div class="logo">Warframe Shawzinu</div>
+                <ul>
+                    <li><a href=""><i class="fas fa-search"></i></a></li>
+                    <li><a href="/"><i class="fas fa-arrow-left"></i></a></li>
+                    {% if not app.user %}
+                    <li><a href="{{path('security_login')}}"><i class="fas fa-sign-in-alt"></i></a></li>
+                    <li><a href="{{path('security_register')}}"><i class="fas fa-user-plus"></i></a></li>
+                    {% else %}
+                    <li><a href="{{path('security_logout')}}"><i class="fas fa-sign-out-alt"></i></a></li>
+                    {% endif%}
+                </ul>
+            </div>
         </div>
-        <!-- /.container -->
-    </footer>
-{% endblock %}</html>
+
+        <div class="sidebar">
+            <ul>
+                <li><a href="#dashboard-tab" class="">
+                        <span class="icon"><i class="fas fa-home" aria-hidden="true"></i></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li><a href="#profile-tab" class="">
+                        <span class="icon"><i class="fas fa-user-edit" aria-hidden="true"></i></span>
+                        <span class="title">{%trans%}Profile{%endtrans%}</span>
+                    </a>
+                </li>
+
+                {% if app.user %}
+                <li><a href="#musiques-tab" class="">
+                        <span class="icon"><i class="fas fa-music" aria-hidden="true"></i></span>
+                        <span class="title">{%trans%}Vos Composition{%endtrans%}</span>
+                    </a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+
+        <div class="main_container">
+
+            {% block body %}{% endblock %}
+
+        </div>
+    </div>
+
+    {% block javascripts %}
+    <script src="/js/javascript.js"></script>
+    <script src="https://kit.fontawesome.com/ee8d4b5e17.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    {% endblock %}
+
+    {% block footer %}{% endblock %}
+</body>
+
+</html>

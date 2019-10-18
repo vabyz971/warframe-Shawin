@@ -30,7 +30,6 @@
                 <div class="logo">Warframe Shawzinu</div>
                 <ul>
                     <li><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href=""><i class="fas fa-bell"></i></a></li>
                     {% if not app.user %}
                     <li><a href="{{path('security_login')}}"><i class="fas fa-sign-in-alt"></i></a></li>
                     <li><a href="{{path('security_register')}}"><i class="fas fa-user-plus"></i></a></li>
@@ -97,8 +96,7 @@
         crossorigin="anonymous"></script>
     {% endblock %}
 
+    {% block footer %}{% endblock %}
 </body>
-
-{% block footer %}{% endblock %}
 
 </html>
