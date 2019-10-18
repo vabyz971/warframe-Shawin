@@ -117,4 +117,41 @@ class MusiqueController extends AbstractController
             "commentForm" => $form->createView()
         ]);
     }
+
+     /**
+     * @Route("/musique/{id}/suppressionmusique", name="musique_suppression")
+     * @param Musique $musique
+     */
+        public function supprimer_musique(Musique $musique, ObjectManager $manager,TokenStorageInterface $tokenStorage)
+        {
+
+            $user = $tokenStorage->getToken() ? $tokenStorage->getToken()->getUser() : null;
+            if ($user->getId() == $musique->getIdUser()->getId()){
+                foreach ($musique->getCommented() as $comment){
+                    $manager->remove($comment);
+                }
+                $manager->remove($musique);
+                $manager->flush();
+            } 
+            return $this->redirectToRoute('musique');
+
+        }
+     /** 
+     *@Route("/musique/{id}/suppressioncomment/{COM}", name="comment_suppression")
+     */
+        public function supprimer_comment(Int $COM,Musique $musique, ObjectManager $manager, TokenStorageInterface $tokenStorage)
+        {  
+            $user = $tokenStorage->getToken() ? $tokenStorage->getToken()->getUser() : null;
+            $comment = $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->find($COM);
+            if ($user->getId() == $comment->getUsers()->getId()){
+                $manager->remove($comment);
+                $manager->flush();
+            }
+            return $this->redirectToRoute('musique_detail', ['id' =>$musique->getId()]);
+        }
+
+
+
 }

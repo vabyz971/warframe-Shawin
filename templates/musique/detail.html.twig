@@ -42,6 +42,11 @@
                             :
                             {{ musique.difficulty }}</li>
                     </ul>
+                     {% if app.user %}                    
+                        {% if app.user.id == musique.idUser.id %}
+                            <a class="btn btn-danger" href="{{path('musique_suppression',{id: musique.id, musique: musique})}}" role="button">Supprimer</a>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
 
@@ -62,8 +67,15 @@
                             <div class="media-body">
                                 <h5 class="mt-0">{{comment.author}}</h5>
                                 {{comment.content}}
+                             
+                               
                                 <p class="blockquote-footer">Posté le
-                                    {{ comment.createdAt | date('d/m/Y') }}</p>
+                                    {{ comment.createdAt | date('d/m/Y') }} 
+                                    {% if app.user %}
+                                        {% if app.user.id == comment.users.id %}
+                                         <a href="{{path('comment_suppression',{id: musique.id,COM: comment.id, musique: musique})}}">Supprimer</a>
+                                        {% endif %}    
+                                    {% endif %} </p>              
                             </div>
                         </div>
                     {% endfor %}
@@ -72,12 +84,12 @@
 
                         {{ form_start(commentForm) }}
                         {{ form_row(commentForm.content, {'label' : 'Commenter'}) }}
-                        <button type="submit" class="btn btn-success">Commenter !</button>
+                        <button type="submit" class="btn btn-success">Commentez !</button>
                         {{ form_end(commentForm) }}
 
                     {% else %}
                         <h5>Vous devez être connecter pour commenter</h5>
-                        <a class="btn btn-secondary" href="{{path('security_login')}}" role="button">connecter vous</a>
+                        <a class="btn btn-secondary" href="{{path('security_login')}}" role="button">connectez-vous</a>
                     {% endif %}
                 </div>
             </div>
