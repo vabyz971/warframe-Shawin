@@ -1,52 +1,193 @@
-.p-top-1 {
-  padding-top: 1rem;
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap");
+body {
+  font-family: 'Montserrat', sans-serif;
 }
 
-.p-top-2 {
-  padding-top: 2rem;
+.wrapper.closeNav .sidebar {
+  width: 70px;
 }
 
-.p-top-3 {
-  padding-top: 3rem;
+.wrapper.closeNav .sidebar ul li a {
+  text-align: center;
 }
 
-.p-top-4 {
-  padding-top: 4rem;
+.wrapper.closeNav .sidebar ul li a span.icon {
+  margin: 0;
 }
 
-.user-statue {
+.wrapper.closeNav .sidebar ul li a span.title {
+  display: none;
+}
+
+.wrapper.closeNav .main_container {
+  width: calc(100% -70px);
+  margin-left: 70px;
+}
+
+.wrapper {
+  margin: 10px;
+}
+
+.wrapper .top_navbar {
+  width: calc(100% - 20px);
+  height: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 3rem;
+  position: fixed;
+  top: 10px;
+}
+
+.wrapper .top_navbar .hamburger {
+  width: 70px;
+  height: 100%;
+  background-color: #2e4ead;
+  padding: 15px 17px;
+  border-top-left-radius: 20px;
+  cursor: pointer;
+}
+
+.wrapper .top_navbar .hamburger div {
+  width: 35px;
+  height: 4px;
+  background: #92a6e2;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.wrapper .top_navbar .top_menu {
+  width: calc(100% - 70px);
+  background: #fff;
+  height: 100%;
+  border-top-right-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0 20px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.user-statue .user-name {
-  -webkit-transform: translate(20px, -5px);
-          transform: translate(20px, -5px);
-  color: white;
-  font-weight: 400;
-  font-size: medium;
+.wrapper .top_navbar .top_menu .logo {
+  color: #2e4ead;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.wrapper .top_navbar .top_menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.wrapper .top_navbar .top_menu ul li {
+  list-style: none;
+  text-decoration: none;
+}
+
+.wrapper .top_navbar .top_menu ul li a {
+  display: block;
+  margin: 0 10px;
+  padding: 4px;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #2e4ead;
+  text-align: center;
+  border-radius: 50%;
+  color: #2e4ead;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+}
+
+.wrapper .top_navbar .top_menu ul li a:hover {
+  background: #4360b5;
+  color: #fff;
+}
+
+.wrapper .sidebar {
+  position: fixed;
+  top: 70px;
+  left: 10px;
+  background: #2e4ead;
+  width: 200px;
+  height: calc(100% - 80px);
+  border-bottom-left-radius: 20px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.wrapper .sidebar ul {
+  list-style: none;
+  text-decoration: none;
   padding: 0px;
 }
 
-.user-statue .user-link {
-  padding: 0px 5px;
-  margin: 0px;
+.wrapper .sidebar ul li a {
+  display: block;
+  padding: 20px;
+  color: #fff;
+  position: relative;
+  margin-bottom: 1px;
+  color: #92a6e2;
+  -webkit-transition: all 0.1 ease;
+  transition: all 0.1 ease;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
-.user-statue .user-link img {
-  width: 42px;
+.wrapper .sidebar ul li a span .icon {
+  margin-right: 10px;
+  display: inline-block;
 }
 
-.user-statue .user-link i {
-  color: white;
-  width: 16px;
-  -webkit-transform: translate(0px, 10px);
-          transform: translate(0px, 10px);
-  stroke-width: 3px;
+.wrapper .sidebar ul li a span .title {
+  display: inline-block;
+}
+
+.wrapper .sidebar ul li a:hover {
+  background: #4360b5;
+  color: #fff;
+}
+
+.wrapper .sidebar ul li a :hover:before {
+  display: block;
+}
+
+.wrapper .sidebar ul li a:before {
+  contain: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: #92a6e2;
+  display: none;
+}
+
+.wrapper .sidebar ul li a:hover, .wrapper .sidebar ul li a.active {
+  background: #4360b5;
+  color: #fff;
+}
+
+.wrapper .sidebar ul li a:hover:before, .wrapper .sidebar ul li a.active:before {
+  display: block;
+}
+
+.wrapper .main_container {
+  width: calc(100% - 70px);
+  margin-top: 70px;
+  margin-left: 200px;
+  padding: 15px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 /*# sourceMappingURL=main.css.map */

@@ -7,3 +7,11 @@ function copyToClipboard(element) {
   document.execCommand("copy");
   $temp.remove();
 }
+
+
+
+
+// Function NavBar toggle //
+function NavBarToggle(element){
+  $(".wrapper").toggleClass("closeNav");
+}
