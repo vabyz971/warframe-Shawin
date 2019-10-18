@@ -2,15 +2,51 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
 
 
+:root{
+
+    // Color dark
+    .dark{
+
+        --bgPrimary : #323232;
+
+        --navPrimary : #3c3c3c;
+        --navHoverPrimary :#2c2c2c;
+
+        --navSecondary : #575757;
+        --navHoverSecondary : #3d3d3d;
+
+        --navColorLight : #fff;
+
+        --navText : #fff;
+        --navHoverText : #3d3d3d;
+    
+    }
+
+    //Color Light
+
+    --bgPrimary : #fff;
+
+    --navColorLight : #fff;
+
+    --navPrimary : #4360b5;
+    --navHoverPrimary :#92a6e2;
+
+    --navSecondary : #4360b5;
+    --navHoverSecondary : #6e84c4;
+    --navText : #fff; 
+    --navHoverText : #4360b5;
+}
+
 
 
 body{
+    background-color: var(--bgPrimary) !important;
     font-family: 'Montserrat', sans-serif;
 }
 
 
-//** Nav-Bar vertical **//
 
+//** Nav-Bar vertical **//
 
 .wrapper.closeNav{
     
@@ -36,10 +72,9 @@ body{
     }
 }
 
-
-
 .wrapper{
     margin: 10px;
+    z-index: 100;
 
     .top_navbar{
         width: calc(100% - 20px);
@@ -51,7 +86,7 @@ body{
         .hamburger{
             width: 70px;
             height: 100%;
-            background-color: #2e4ead;
+            background-color: var(--navSecondary);
             padding: 15px 17px;
             border-top-left-radius: 20px;
             cursor: pointer;
@@ -60,7 +95,7 @@ body{
             div{
                 width: 35px;
                 height: 4px;
-                background: #92a6e2;
+                background: var(--navText);
                 margin:  5px 0;
                 border-radius: 5px;
             }
@@ -68,18 +103,18 @@ body{
 
         .top_menu{
             width: calc(100% - 70px);
-            background: #fff;
+            background: var(--navColorLight);
             height: 100%;
             border-top-right-radius: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
-            box-shadow: 0 1px 1px rgba(0,0,0, 0.1);
+            box-shadow: 0 1px 1px #ffffff1a;
 
 
             .logo{
-                color: #2e4ead;
+                color: var(--navHoverText);
                 font-size: 20px;
                 font-weight: 700;
                 letter-spacing: 3px;
@@ -89,6 +124,7 @@ body{
             ul{
                 display: flex;
                 box-sizing: border-box;
+                margin: 0;
                 
                 li{
                     list-style: none;
@@ -102,16 +138,16 @@ body{
                 padding: 4px;
                 width: 35px;
                 height: 35px;
-                border: 1px solid #2e4ead;
+                border: 1px solid var(--navSecondary);
                 text-align: center;
                 border-radius: 50%;
-                color: #2e4ead;
+                color: var(--navHoverText);
                 transition: all 0.15s;
             }
 
             ul li a:hover{
-                background: #4360b5;
-                color: #fff;
+                background: var(--navSecondary);
+                color: var(--navText);
             }
 
         }
@@ -121,7 +157,7 @@ body{
         position: fixed;
         top: 70px;
         left: 10px;
-        background: #2e4ead;
+        background: var(--navPrimary);
         width: 200px;
         height: calc(100% - 80px);
         border-bottom-left-radius: 20px;
@@ -137,10 +173,9 @@ body{
         ul li a {
             display: block;
             padding: 20px;
-            color: #fff;
+            color: var(--navText);
             position: relative;
             margin-bottom: 1px;
-            color: #92a6e2;
             transition: all 0.1 ease;
             text-decoration: none;
             white-space: nowrap;
@@ -158,8 +193,8 @@ body{
         }
 
         ul li a:hover{
-            background: #4360b5;
-            color: #fff;
+            background: var(--navHoverSecondary);
+            color: var(--navHoverText);
         } 
 
         ul li a :hover:before{
@@ -173,13 +208,13 @@ body{
             left: 0;
             width: 3px;
             height: 100%;
-            background: #92a6e2;
+            background: var(--navSecondary);
             display: none;
         }
 
         ul li a:hover ,ul li a.active{
-            background: #4360b5;
-            color: #fff;
+            background: var(--navHoverPrimary);
+            color: var(--navText);
         }
 
         ul li a:hover:before ,ul li a.active:before{
