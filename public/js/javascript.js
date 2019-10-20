@@ -3,6 +3,7 @@
 function copyToClipboard(element) {
   var $temp = $("<input>");
   $("body").append($temp);
+  alert("Code Copy");
   $temp.val($(element).text()).select();
   document.execCommand("copy");
   $temp.remove();

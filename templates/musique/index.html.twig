@@ -16,48 +16,83 @@
 
             {% for musique in musiques %}
 
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="{{ path ('musique_detail', {id:musique.id}) }}">
-                            <img class="card-img-top" src="{{ musique.visual }}" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="{{ path ('musique_detail', {id:musique.id}) }}">{{ musique.title }}</a>
-                            </h4>
-                            <h5>{%trans%}Auteur{%endtrans%}
-                                :
-                                {{ musique.idUser.nickname }}</h5>
-
-                            <p class="card-text">{{ musique.difficulty }}</p>
-                            <p class="card-text">{{ musique.description }}</p>
-                            <p class="card-text">{{ musique.code }}</p>
+                <div class="card-standard_middle">
+                    <dir class="top-section">
+                        <iframe src="https://www.youtube.com/embed/1hF3y4eZ6D0" frameborder="0"></iframe>
+                        <!--<img src="/img/background/Warframe0001.jpg" alt="">
+                                                                                         -->
+                        <div class="menuicon">
+                            <a href="{{ path ('musique_detail', {id:musique.id}) }}">
+                                <span class="s1"></span>
+                                <span class="s2"></span>
+                            </a>
                         </div>
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col-lg">
-                                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button">
-                                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                                            <button type="button" class="btn ">
-                                                <i class="far fa-heart"></i>
-                                            </button>
-                                            <a href="{{ path ('musique_detail', {id:musique.id}) }}" class="btn ">
-                                                <i class="far fa-comment"></i>
-                                                <span class="badge badge-primary">
-                                                    {{ musique.commented | length }}
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 d-flex align-items-center">
-                                    <small class="text-muted">Crée le
-                                        {{ musique.created | date('d/m/Y') }}</small>
-                                </div>
-
-                            </div>
+                        <div class="name">{%trans%}Crée par{%endtrans%}
+                            <span>{{ musique.idUser.nickname }}</span>
                         </div>
+                    </dir>
+
+                    <div class="infos-section">
+                        <h2>Code
+                            <i onclick="copyToClipboard('#code{{musique.id}}')" class="fas fa-link"></i>
+                            <div class="border"></div>
+                        </h2>
+                        <p id="code{{musique.id}}">{{ musique.code }}</p>
+                        <!--
+                                                                        <div class="s-m">
+                                                                            <a href="" class="fab fa-facebook-f"></a>
+                                                                            <a href="" class="fab fa-twitter"></a>
+                                                                            <a href="" class="fab fa-youtube"></a>
+                                                                        </div>
+                                                
+                                                                        -->
                     </div>
                 </div>
+
+                <!--
+                                                                <div class="col-lg-4 col-md-6 mb-4">
+                                                                    <div class="card h-100">
+                                                                        <a href="{{ path ('musique_detail', {id:musique.id}) }}">
+                                                                            <img class="card-img-top" src="{{ musique.visual }}" alt=""></a>
+                                                                        <div class="card-body">
+                                                                            <h4 class="card-title">
+                                                                                <a href="{{ path ('musique_detail', {id:musique.id}) }}">{{ musique.title }}</a>
+                                                                            </h4>
+                                                                            <h5>{%trans%}Auteur{%endtrans%}
+                                                                                :
+                                                                                {{ musique.idUser.nickname }}</h5>
+                                                
+                                                                            <p class="card-text">{{ musique.difficulty }}</p>
+                                                                            <p class="card-text">{{ musique.description }}</p>
+                                                                            <p class="card-text">{{ musique.code }}</p>
+                                                                        </div>
+                                                                        <div class="card-footer">
+                                                                            <div class="row">
+                                                                                <div class="col-lg">
+                                                                                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button">
+                                                                                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                                                                                            <button type="button" class="btn ">
+                                                                                                <i class="far fa-heart"></i>
+                                                                                            </button>
+                                                                                            <a href="{{ path ('musique_detail', {id:musique.id}) }}" class="btn ">
+                                                                                                <i class="far fa-comment"></i>
+                                                                                                <span class="badge badge-primary">
+                                                                                                    {{ musique.commented | length }}
+                                                                                                </span>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6 d-flex align-items-center">
+                                                                                    <small class="text-muted">Crée le
+                                                                                        {{ musique.created | date('d/m/Y') }}</small>
+                                                                                </div>
+                                                
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                -->
 
             {% endfor %}
 
