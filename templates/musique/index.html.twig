@@ -12,7 +12,14 @@
     </section>
 
     <div class="container">
+            <form class="form-inline md-form form-sm mb-5">
+  <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Recherche"
+    aria-label="Search">
+  <a href=""><i class="fas fa-search" aria-hidden="true"></i></a>
+</form>
+    
         <div class="row">
+        
 
             {% for musique in musiques %}
 
@@ -27,17 +34,19 @@
                                 <span class="s2"></span>
                             </a>
                         </div>
+                        
                         <div class="name">{%trans%}Crée par{%endtrans%}
                             <span>{{ musique.idUser.nickname }}</span>
                         </div>
                     </dir>
 
                     <div class="infos-section">
+                        <h4><a href="{{ path ('musique_detail', {id:musique.id}) }}">{{musique.title}}</a></h4>
                         <h2>Code
                             <i onclick="copyToClipboard('#code{{musique.id}}')" class="fas fa-link"></i>
                             <div class="border"></div>
                         </h2>
-                        <p id="code{{musique.id}}">{{ musique.code }}</p>
+                        <p class="text-break" id="code{{musique.id}}">{{ musique.code }}</p>
                         <!--
                                                                         <div class="s-m">
                                                                             <a href="" class="fab fa-facebook-f"></a>
