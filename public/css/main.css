@@ -226,31 +226,40 @@ body {
   transition: all 0.3s ease;
 }
 
-.card-standard_middle {
+.card-standard.middle {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.card-standard.bottom {
+  margin-bottom: 20px;
+}
+
+.card-standard {
   width: 340px;
   background-color: var(--navColorLight);
   overflow: hidden;
   -webkit-box-shadow: 0 0 10px #00000052;
           box-shadow: 0 0 10px #00000052;
   border-radius: 10px;
-  margin-left: 20px;
 }
 
-.card-standard_middle .top-section {
+.card-standard .top-section {
   position: relative;
   padding: 0;
   margin: 0;
 }
 
-.card-standard_middle .top-section iframe {
+.card-standard .top-section iframe {
+  width: 100%;
+  height: 200px;
+}
+
+.card-standard .top-section img {
   width: 100%;
 }
 
-.card-standard_middle .top-section img {
-  width: 100%;
-}
-
-.card-standard_middle .top-section .menuicon {
+.card-standard .top-section .menuicon {
   position: absolute;
   width: 20px;
   height: 10px;
@@ -259,7 +268,7 @@ body {
   display: block;
 }
 
-.card-standard_middle .top-section .menuicon span {
+.card-standard .top-section .menuicon span {
   width: 100%;
   height: 3px;
   background-color: #ffffff;
@@ -272,19 +281,19 @@ body {
   border-radius: 10px;
 }
 
-.card-standard_middle .top-section .menuicon .s1 {
+.card-standard .top-section .menuicon .s1 {
   left: -5px;
 }
 
-.card-standard_middle .top-section .menuicon .s2 {
+.card-standard .top-section .menuicon .s2 {
   left: 5px;
 }
 
-.card-standard_middle .top-section .menuicon:hover span {
+.card-standard .top-section .menuicon:hover span {
   left: 0;
 }
 
-.card-standard_middle .top-section .name {
+.card-standard .top-section .name {
   font-size: 15px;
   font-weight: 900;
   opacity: .8;
@@ -293,36 +302,36 @@ body {
   margin: 10px 0px;
 }
 
-.card-standard_middle .top-section .name span {
+.card-standard .top-section .name span {
   font-weight: 600;
 }
 
-.card-standard_middle .infos-section {
+.card-standard .infos-section {
   padding: 0 30px 0 30px;
   color: #333333;
 }
 
-.card-standard_middle h2 {
+.card-standard h2 {
   position: relative;
   font-size: 16px;
 }
 
-.card-standard_middle h2 i {
+.card-standard h2 i {
   cursor: pointer;
   -webkit-transition: all 0.2 ease;
   transition: all 0.2 ease;
 }
 
-.card-standard_middle h2 i:hover {
+.card-standard h2 i:hover {
   color: var(--navHoverText);
 }
 
-.card-standard_middle p {
+.card-standard p {
   text-align: justify;
   font-size: 14px;
 }
 
-.card-standard_middle .border {
+.card-standard .border {
   width: 30px;
   height: 3px;
   background: var(--navSecondary);
@@ -331,12 +340,12 @@ body {
   bottom: -6px;
 }
 
-.card-standard_middle .s-m {
+.card-standard .s-m {
   text-align: center;
   margin: 15px 0px 10px 0px;
 }
 
-.card-standard_middle .s-m a {
+.card-standard .s-m a {
   text-decoration: none;
   font-size: 20px;
   color: var(--navHoverText);
@@ -345,16 +354,16 @@ body {
   transition: 0.4s;
 }
 
-.card-standard_middle .s-m a:hover {
+.card-standard .s-m a:hover {
   color: var(--navHoverSecondary);
 }
 
-.card-standard_middle .actuality {
+.card-standard .actuality {
   float: left;
   opacity: 0.6;
 }
 
-.card-standard_middle .actuality span {
+.card-standard .actuality span {
   float: left;
 }
 /*# sourceMappingURL=main.css.map */

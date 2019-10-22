@@ -18,11 +18,18 @@ class HomeController extends AbstractController
     public function index(MusiqueRepository $repo)
     {
         //Affiche les musique les plus récents
-        $musiques = $repo->findBy([], ['created' => 'DESC']);
+        $musiques_recent = $repo->findBy([], ['created' => 'DESC']);
+
+        //Affiche les musique les plus aimer
+
+        //Afficher les utilisateurs ou leur musique sont les plus comsulter
+
+
 
         return $this->render('home/index.html.twig', [
             'current_menu' => 'home',
-            'musiques' => $musiques
+            'musiques' => $musiques_recent,
+
         ]);
     }
 }

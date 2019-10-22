@@ -1,32 +1,58 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
 
-
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Bienvenus Tenno</h1>
+        <p>le site Warframe Shawzinu a été crée par le clan darkRevenge et les pétales du lotus, pour que tout tenno
+            puis partager leur
+            composition crée avec l'instrument de musique Shawzin.
+        </p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">plus d'infos</a></p>
+    </div>
+</div>
+<div class="container">
     <div class="row">
-        <div class="col-sm">
-            <iframe src="https://www.youtube.com/embed/1hF3y4eZ6D0" frameborder="0"></iframe>
+
+        <div class="col-md-4">
+
+            <h2>Récents</h2>
+
+            {% for musique in musiques %}
+
+            <div class="card-standard bottom">
+                <dir class="top-section">
+                    <div class="name">{%trans%}Crée par{%endtrans%}
+                        <span>{{ musique.idUser.nickname }}</span>
+                    </div>
+                </dir>
+
+                <div class="infos-section">
+                    <h4>
+                        <a href="{{ path ('musique_detail', {id:musique.id}) }}">{{musique.title}}</a>
+                    </h4>
+                    <h2>Code
+                        <i onclick="copyToClipboard('#code{{musique.id}}')" class="fas fa-link"></i>
+
+                        <div class="border"></div>
+                    </h2>
+                    <p class="text-break" id="code{{musique.id}}">{{ musique.code }}</p>
+                    <div class="s-m">
+                        <a href="https://www.youtube.com/embed/1hF3y4eZ6D0" class="fab fa-youtube"></a>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
         </div>
-        <div class="col-sm">
-            <iframe src="https://www.youtube.com/watch?v=sWKuACdRPpc" frameborder="0"></iframe>
+        <div class="col-md-4">
+            <h2>Polulaires</h2>
         </div>
-        <div class="col-sm">
-            <iframe src="https://www.youtube.com/watch?v=KJ_gAn_Tu8U" frameborder="0"></iframe>
+        <div class="col-md-4">
+            <h2>Meilleur compositeur</h2>
         </div>
     </div>
-
-
-    <div class="row">
-        <div class="col-sm">
-            <iframe src="https://www.youtube.com/embed/1hF3y4eZ6D0" frameborder="0"></iframe>
-        </div>
-        <div class="col-sm">
-            <iframe src="https://www.youtube.com/watch?v=sWKuACdRPpc" frameborder="0"></iframe>
-        </div>
-        <div class="col-sm">
-            <iframe src="https://www.youtube.com/watch?v=KJ_gAn_Tu8U" frameborder="0"></iframe>
-        </div>
-    </div>
+</div>
 
 {% endblock %}

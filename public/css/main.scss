@@ -243,15 +243,25 @@ body{
 
 
 
-//** Card standard_middle Page Musique **//
+//** Card standard **//
 
-.card-standard_middle{
+
+.card-standard.middle{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.card-standard.bottom{
+    margin-bottom: 20px;
+}
+
+.card-standard{
     width: 340px;
     background-color: var(--navColorLight);
     overflow: hidden;
     box-shadow: 0 0 10px #00000052;
     border-radius: 10px;
-    margin-left: 20px;
+
 
 
     .top-section{
@@ -261,6 +271,7 @@ body{
 
         iframe{
             width: 100%;
+            height: 200px;
         }
 
         img{
