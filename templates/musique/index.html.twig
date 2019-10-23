@@ -17,24 +17,24 @@
             {% for musique in musiques %}
 
                 <div class="card-standard middle">
-                    <dir class="top-section">
+                    <div class="top-section">
                         <div class="name">{%trans%}Crée par{%endtrans%}
                             <span>{{ musique.idUser.nickname }}</span>
                         </div>
-                    </dir>
+                    </div>
 
                     <div class="infos-section">
                         <h4>
                             <a href="{{ path ('musique_detail', {id:musique.id}) }}">{{musique.title}}</a>
                         </h4>
-                        <h2>Code
+                        <h2>Code :
                             <i onclick="copyToClipboard('#code{{musique.id}}')" class="fas fa-link"></i>
 
                             <div class="border"></div>
                         </h2>
                         <p class="text-break" id="code{{musique.id}}">{{ musique.code }}</p>
                         <div class="s-m">
-                            <a href="https://www.youtube.com/embed/1hF3y4eZ6D0" class="fab fa-youtube"></a>
+                            <a href="{{ musique.visual}}" class="fab fa-youtube"></a>
                         </div>
                     </div>
                 </div>

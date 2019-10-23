@@ -45,6 +45,10 @@ body{
 }
 
 
+.col{
+    position: unset !important;
+}
+
 
 //** Nav-Bar vertical **//
 
@@ -278,40 +282,6 @@ body{
             width: 100%;
         }
 
-        .menuicon{
-            position: absolute;
-            width: 20px;
-            height: 10px;
-            top: 20px;
-            cursor: pointer;
-            display: block;
-
-            span{
-                width: 100%;
-                height: 3px;
-                background-color: #ffffff;
-                position: relative;
-                display: block;
-                margin-bottom: 6px;
-                opacity: .5;
-                transition: .4s;
-                border-radius: 10px;
-            }
-
-            .s1{
-                left: -5px;
-
-            }
-
-            .s2{
-                left: 5px;
-            }
-        }
-
-        .menuicon:hover span{
-            left: 0;
-        }
-
         .name {
             //position: absolute;
             font-size: 15px;
@@ -384,6 +354,89 @@ body{
         span{
             float: left;
         }
+    }
+
+}
+
+//**  Card standard **//
+
+//** Card Conpact **//
+
+.card-conpact{
+
+    width: 200px;
+    background-color: var(--navColorLight);
+    overflow: hidden;
+    box-shadow: 0 0 5px #00000052;
+    border-radius: 10px;
+    margin: 5px 0;
+
+    .top-section{
+
+        display: inline-flex;
+      
+        .name {
+            //position: absolute;
+            font-size: 12px;
+            font-weight: 700;
+            opacity: .8;
+            color: var(--navHoverText);
+            text-align: center;
+            margin: 5px 0px;
+
+            span{
+                font-weight: 400;
+            }
+        }
+
+    }
+
+    .infos-section{
+        padding: 0 20px 0 20px;
+        color: #333333;
+
+
+        h4{
+            text-align: center;
+            font-size: 20px;
+            margin: 5px 0px;
+        }
+
+        h2{
+            font-size: 16px;
+            padding: 5px;
+            
+            i{
+                cursor: pointer;
+                transition: all 0.2 ease;
+            }
+            i:hover{
+                color: var(--navHoverText);
+            }
+
+        }
+
+        p{
+            display: none;
+        }
+
+
+        .s-m{
+        text-align: center;
+        margin: 15px 0px 10px 0px;
+
+        a{
+            text-decoration: none;
+            font-size: 20px;
+            color: var(--navHoverText);
+            padding: 0 14px;
+            transition: 0.4s;
+        }
+
+        a:hover{
+            color: var(--navHoverSecondary);
+        }
+    }
     }
 
 }

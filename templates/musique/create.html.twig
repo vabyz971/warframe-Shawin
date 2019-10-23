@@ -15,11 +15,10 @@
 
                 {{ form_start(formMusique,  {attr: {'class': "form-group"}}) }}
                 {{ form_row(formMusique.title, {'attr': {'placeholder': "Titre de la musique (50 caractères max)",'maxlength': "50"}})}}
-                {{ form_row(formMusique.difficulty)}}
-                {{ form_row(formMusique.description,{'attr': {'placeholder': "Décrivez votre musique !",'style' : "height:12rem;"}})}}
+                {{ form_row(formMusique.visual,{'attr': {'placeholder': "Si votre composition à une vidéo youtube ou autre copier le lien",'style' : "height:5rem;"}})}}
                 {{ form_row(formMusique.code,{'attr': {'placeholder': "Exemple:
     4BAABADkAHiAMhAVUAbSAhRAnSAqUAtCAxCAzkA3iA9hBHUBPSBURBbSBdUBgEBlEBnkBsiByhB7UCCSCIRCOSCRUCUBCZBCckChiCnhCwUC2SC8RDCSDFUDI
-",'style' : "height:13rem;"}}) }}
+",'style' : "height:10rem;"}}) }}
 
                 <button type="submit" class="btn btn-primary">
                     {% if editMode %}
