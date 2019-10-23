@@ -53,6 +53,20 @@
         </div>
         <div class="col">
             <h2>Meilleur compositeur</h2>
+
+            {% for user in users %}
+            <div class="card-conpact">
+                <div class="infos-section">
+                    <h4>
+                        <a href="">{{user.Nickname}}</a>
+                    </h4>
+                    <div class="s-m">
+                        <a href=" " class="fab fa-youtube" target="_blank"></a>
+                        <a href=" " class="fab fa-facebook-f" target="_blank"></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
