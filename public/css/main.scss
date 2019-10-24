@@ -314,6 +314,27 @@ body{
             color: var(--navHoverText);
         }
 
+        i:active{
+            animation-name: scaleBTN;
+            animation-duration: 0.2s;
+            animation-iteration-count: 1;
+            animation-direction: alternate;
+            animation-fill-mode: forwards;
+            
+        }
+
+        @keyframes scaleBTN {
+            0%, 100% {
+                transform: scale(1);
+                transform: rotateZ(20deg);
+            }
+
+            50% {
+                transform: scale(1.3);
+                transform: rotateZ(-90deg);
+            } 
+        }
+
     }
 
     p{
